@@ -197,6 +197,73 @@
         
         .nav-links a:hover { color: var(--rust); }
         
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 150;
+        }
+        
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(247,245,242,0.98);
+            backdrop-filter: blur(12px);
+            padding: 24px 32px;
+            border-bottom: 1px solid rgba(138,132,122,0.2);
+            z-index: 99;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav a {
+            display: block;
+            padding: 14px 0;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            border-bottom: 1px solid rgba(138,132,122,0.1);
+        }
+        
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--rust);
+        }
+        
+        @media (max-width: 900px) {
+            .mobile-menu-btn { display: flex; }
+        }
+        
         /* Hero */
         .hero {
             min-height: 100vh;
@@ -1029,6 +1096,71 @@
             color: var(--text-muted);
         }
         
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(138,132,122,0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--rust);
+        }
+        
+        .faq-question {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--rust);
+            transition: transform 0.3s;
+            font-weight: 300;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+        
+        .faq-answer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 900px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Instagram Section */
         .instagram-section {
             background: var(--cream);
@@ -1100,11 +1232,23 @@
                     <a href="#collection">Collection</a>
                     <a href="#sold">Sold</a>
                     <a href="#about">Story</a>
+                    <a href="#faq">FAQ</a>
                     <a href="#contact">Contact</a>
+                </div>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         </div>
     </nav>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#collection" onclick="closeMobileMenu()">Collection</a>
+        <a href="#sold" onclick="closeMobileMenu()">Sold</a>
+        <a href="#about" onclick="closeMobileMenu()">Our Story</a>
+        <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#request" onclick="closeMobileMenu()">Wishlist</a>
+        <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    </div>
     
     <section class="hero">
         <div class="container">
@@ -1337,6 +1481,90 @@
                     <textarea placeholder="Details: model, year, color, budget, frame size..." rows="3"></textarea>
                     <button type="submit" class="btn">Add Me to the Hunt</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked</h2>
+                <p>Common questions from collectors.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Why don't you restore bikes to showroom condition?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Because patina is proof. A repainted bike loses its provenance - there's no way to verify it's an original frame with original paint. In the classic car world, matching-numbers barn finds are worth more than concours restorations. The vintage MTB market is heading the same direction. We preserve authenticity, not just appearance.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Are these bikes actually rideable?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Every bike is fully serviced with fresh bearings, new cables, adjusted brakes and indexed gears. The patina is cosmetic - mechanically, these bikes are ready for trails. That said, many collectors display them. Your choice.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>How do you determine pricing?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Prices are based on rarity, condition, originality, and current market comps from Retrobike, eBay sold listings, and collector forums. A museum-grade Klein Adroit in original Sea & Sky paint commands more than a common Stumpjumper. We price fairly and transparently - no games.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Do you ship internationally?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, throughout Europe via insured courier (DPD/GLS). Slovenia/Austria: €30-40. Germany/Italy: €50-70. Rest of EU: €70-100. Bikes are professionally packed in reinforced boxes. US/UK shipping possible on request - contact us for a quote.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Can you find a specific bike for me?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>That's the fun part. Tell us what you're hunting - brand, model, year, colorway, frame size - and we'll keep an eye out. We source from across Austria, Germany, Slovenia, Croatia, and beyond. No finder fee until we find it. <a href="#request" style="color:var(--rust);text-decoration:underline;">Submit a request here.</a></p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What years/eras do you focus on?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The golden era: 1985-1999. This was when mountain biking exploded from niche to mainstream. Brands like Klein, Yeti, Fat Chance, GT, and Ritchey were innovating rapidly. Steel and aluminum hardtails with rigid forks or early suspension. Before carbon took over. These bikes have soul.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>What's the return policy?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We describe every bike honestly with detailed photos showing every scratch and dent. If a bike arrives significantly different from described, we'll make it right. That said, these are vintage items with character - minor variations in patina are expected and part of the charm.</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Why are some components replaced?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Safety comes first. Worn brake pads get replaced. Frayed cables too. When original parts are beyond service, we source period-correct replacements - same era Shimano, same generation SunTour. We always disclose what's original and what's been swapped. Purists can request specific NOS parts.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1667,6 +1895,31 @@
         
         render();
         initGallery();
+        
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const btn = document.querySelector('.mobile-menu-btn');
+            const nav = document.getElementById('mobile-nav');
+            btn.classList.toggle('active');
+            nav.classList.toggle('active');
+        }
+        
+        function closeMobileMenu() {
+            const btn = document.querySelector('.mobile-menu-btn');
+            const nav = document.getElementById('mobile-nav');
+            btn.classList.remove('active');
+            nav.classList.remove('active');
+        }
+        
+        // FAQ Accordion
+        function toggleFaq(element) {
+            // Close other open items
+            document.querySelectorAll('.faq-item.active').forEach(item => {
+                if (item !== element) item.classList.remove('active');
+            });
+            // Toggle current
+            element.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
