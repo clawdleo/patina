@@ -1,0 +1,10 @@
+# Pat Ina Vintage MTB
+# https://patina.onrender.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://patina.onrender.com/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1
