@@ -1,19 +1,816 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
-<HTML>
-<HEAD>
-    <TITLE>~*~*~ PAT INA ~*~*~ Your #1 Source for RADICAL Vintage Mountain Bikes!!! ~*~*~</TITLE>
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
-    <META NAME="keywords" CONTENT="mountain bike, MTB, vintage, retro, klein, specialized, stumpjumper, 90s, radical, extreme, bikes">
-    <META NAME="description" CONTENT="The ULTIMATE vintage mountain bike hunting ground! Find KILLER deals on classic 90s shred machines!!!">
-</HEAD>
-<FRAMESET COLS="180,*" FRAMEBORDER="1" BORDER="5" BORDERCOLOR="#FF00FF">
-    <FRAME SRC="nav-90s.html" NAME="nav" SCROLLING="auto" NORESIZE>
-    <FRAME SRC="main-90s.html" NAME="main" SCROLLING="auto">
-    <NOFRAMES>
-        <BODY BGCOLOR="#000000" TEXT="#00FF00">
-            <H1>Your browser doesn't support frames!</H1>
-            <P>Get <A HREF="http://www.netscape.com">Netscape Navigator 4.0</A> NOW!!!</P>
-        </BODY>
-    </NOFRAMES>
-</FRAMESET>
-</HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pat Ina | Vintage Mountain Bikes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7f5f2;
+            --bg-dark: #1a1714;
+            --bg-card: #fffefa;
+            --text: #1a1714;
+            --text-light: #5c564d;
+            --text-muted: #8a847a;
+            --rust: #8b4a2b;
+            --rust-light: #c4704a;
+            --copper-green: #4a6b5d;
+            --aged-bronze: #7a6b4e;
+            --oxidized: #5d7a6b;
+            --weathered: #a69580;
+            --warm-cream: #f5f0e6;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a { color: inherit; text-decoration: none; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Grain texture */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(247,245,242,0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--rust);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,0.8); }
+        nav:not(.scrolled) .logo { color: #fff; }
+        
+        .nav-links a:hover { color: var(--rust); }
+        
+        /* Hero with Video */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26,23,20,0.4) 0%, rgba(26,23,20,0.7) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 0 32px;
+        }
+        
+        .hero-content h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero-content h1 span {
+            color: var(--rust-light);
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--rust);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--rust-light);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: #fff;
+            margin-left: 16px;
+        }
+        
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: #fff;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--bg-dark);
+            color: var(--warm-cream);
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rust), var(--rust-light), var(--copper-green), var(--oxidized), var(--aged-bronze));
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 40px;
+        }
+        
+        .stat h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+        
+        .stat p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+        }
+        
+        /* Sections */
+        section {
+            padding: 120px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 50px 30px;
+            background: var(--bg-card);
+            border: 1px solid rgba(138,132,122,0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(26,23,20,0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 24px;
+            color: var(--rust);
+        }
+        
+        .feature-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        /* Split Section */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        
+        .split-image {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .split-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(139,74,43,0.1) 0%, transparent 50%);
+        }
+        
+        .split-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            background: var(--warm-cream);
+        }
+        
+        .split-content h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        
+        .split-content p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(138,132,122,0.15);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(26,23,20,0.12);
+        }
+        
+        .product-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(145deg, #eae6de, #ddd9d1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--rust);
+            color: #fff;
+            padding: 6px 14px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        
+        .product-info {
+            padding: 24px;
+        }
+        
+        .product-brand {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--copper-green);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .product-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        
+        .product-year {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(138,132,122,0.15);
+        }
+        
+        .product-price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--rust);
+        }
+        
+        .product-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+        
+        .product-link:hover { color: var(--rust); }
+        
+        /* Testimonial */
+        .testimonial-section {
+            background: var(--bg-dark);
+            color: var(--warm-cream);
+            text-align: center;
+        }
+        
+        .testimonial-quote {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto 32px;
+        }
+        
+        .testimonial-author {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+        }
+        
+        /* Press Section */
+        .press-section {
+            background: var(--warm-cream);
+        }
+        
+        .press-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.5;
+        }
+        
+        .press-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--rust) 0%, var(--aged-bronze) 100%);
+            color: #fff;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+        
+        .cta-section p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-section .btn-outline {
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: var(--warm-cream);
+            padding: 60px 0;
+        }
+        
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--rust-light);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .footer-links a {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+        
+        .footer-links a:hover { opacity: 1; }
+        
+        .footer-text {
+            font-size: 0.85rem;
+            opacity: 0.4;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
+            .split-section { grid-template-columns: 1fr; }
+            .split-content { padding: 60px 32px; }
+            .nav-links { display: none; }
+            .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        
+        @media (max-width: 600px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .btn { padding: 14px 28px; }
+            .btn-outline { margin-left: 0; margin-top: 12px; }
+            section { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <nav id="nav">
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="logo">Pat Ina</a>
+                <div class="nav-links">
+                    <a href="#collection">Collection</a>
+                    <a href="#story">Story</a>
+                    <a href="#process">Process</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero with Video -->
+    <section class="hero">
+        <iframe class="hero-video" 
+            src="https://www.youtube.com/embed/JWfzLqrbqUA?autoplay=1&mute=1&loop=1&playlist=JWfzLqrbqUA&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Vintage Steel.<br><span>Honest Wear.</span></h1>
+            <p>Hand-picked mountain bikes from the golden era. Original patina preserved. Every dent tells a story.</p>
+            <a href="#collection" class="btn btn-primary">View Collection</a>
+            <a href="#story" class="btn btn-outline">Our Story</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3>5</h3>
+                    <p>Available</p>
+                </div>
+                <div class="stat">
+                    <h3>23</h3>
+                    <p>Bikes Sold</p>
+                </div>
+                <div class="stat">
+                    <h3>1985–99</h3>
+                    <p>Era</p>
+                </div>
+                <div class="stat">
+                    <h3>EU</h3>
+                    <p>Shipping</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Features -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Preserved, Not Polished</h2>
+                <p>We don't strip and repaint. We clean, service, and preserve. What you get is authentic.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Time Capsules</h3>
+                    <p>Every bike is a preserved piece of mountain biking history from the sport's defining decade.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                        </svg>
+                    </div>
+                    <h3>Full Documentation</h3>
+                    <p>Every scratch documented. Every component catalogued. Complete transparency on condition.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="1" y="6" width="15" height="10" rx="1"/>
+                            <path d="M16 10h4l3 3v3h-7v-6z"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>EU Shipping</h3>
+                    <p>Professional packing. Full insurance. Safe delivery across Europe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Split Story -->
+    <div class="split-section">
+        <div class="split-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG/800px-Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG')"></div>
+        <div class="split-content" id="story">
+            <h2>I Don't Flip Bikes.<br>I Rescue Them.</h2>
+            <p>It started with a rusty Zaskar I found in a barn in Austria. Everyone said strip it, repaint it, make it look new. But something felt wrong about erasing 30 years of history.</p>
+            <p>That bike had stories in its scratches. Trail dust embedded in places no brush could reach. A dent on the top tube from some forgotten crash in the 90s.</p>
+            <p>So I cleaned it. Serviced it. Protected the patina. And when I posted it online, something clicked. People didn't want showroom-perfect restorations. They wanted authenticity.</p>
+            <a href="#contact" class="btn btn-primary" style="margin-top: 24px;">Get in Touch</a>
+        </div>
+    </div>
+    
+    <!-- Collection -->
+    <section id="collection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Collection</h2>
+                <p>Original condition. Patina preserved. Ready to ride.</p>
+            </div>
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG/500px-Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG" alt="Klein Attitude">
+                        <span class="product-badge">Featured</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">Klein</div>
+                        <h3 class="product-name">Attitude Race</h3>
+                        <div class="product-year">1993</div>
+                        <div class="product-footer">
+                            <span class="product-price">€1,290</span>
+                            <a href="#contact" class="product-link">Inquire →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/GT_Zaskar_2012.JPG/500px-GT_Zaskar_2012.JPG" alt="GT Zaskar">
+                        <span class="product-badge">Rare</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">GT</div>
+                        <h3 class="product-name">Zaskar LE</h3>
+                        <div class="product-year">1994</div>
+                        <div class="product-footer">
+                            <span class="product-price">€850</span>
+                            <a href="#contact" class="product-link">Inquire →</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Historical_Tom_Ritchey_Bicycles_%2817359667581%29.jpg/500px-Historical_Tom_Ritchey_Bicycles_%2817359667581%29.jpg" alt="Ritchey P-23">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">Ritchey</div>
+                        <h3 class="product-name">P-23</h3>
+                        <div class="product-year">1989</div>
+                        <div class="product-footer">
+                            <span class="product-price">€1,450</span>
+                            <a href="#contact" class="product-link">Inquire →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="container">
+            <blockquote class="testimonial-quote">
+                "Finally, someone who understands that these bikes are artifacts, not projects. The Stumpjumper I bought arrived exactly as described—honest patina, perfect mechanically."
+            </blockquote>
+            <p class="testimonial-author">— Marcus, Berlin</p>
+        </div>
+    </section>
+    
+    <!-- Press -->
+    <section class="press-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>As Seen In</h2>
+            </div>
+            <div class="press-logos">
+                <span class="press-logo">Pinkbike</span>
+                <span class="press-logo">BIKE Magazine</span>
+                <span class="press-logo">Retrobike</span>
+                <span class="press-logo">MTBR</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Looking for Something?</h2>
+            <p>Tell me what you're hunting for. I'm always searching across Europe for the next time capsule.</p>
+            <a href="mailto:hello@patina.bikes" class="btn btn-primary">Contact Me</a>
+            <a href="#collection" class="btn btn-outline">View Collection</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">Pat Ina</div>
+                <div class="footer-links">
+                    <a href="#collection">Collection</a>
+                    <a href="#story">Story</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-text">Slovenia • Vintage bikes, honest wear.</div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
