@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAT INA | Rad Vintage MTB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1a1a1a;
+            --bg-dark: #0d0d0d;
+            --bg-card: #252525;
+            --text: #f0f0f0;
+            --text-light: #b0b0b0;
+            --text-muted: #707070;
+            
+            /* 90s MTB colors - neon meets rust */
+            --rust: #ff6b35;
+            --rust-light: #ff8c5a;
+            --copper-green: #00ff9d;
+            --aged-bronze: #ffd93d;
+            --oxidized: #6bcb77;
+            --weathered: #8b7355;
+            --warm-cream: #2a2a2a;
+            --cream: #1f1f1f;
+            
+            /* 90s accent colors */
+            --neon-pink: #ff1493;
+            --electric-blue: #00d4ff;
+            --acid-green: #b8ff00;
+            --purple-haze: #9d4edd;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        a { color: inherit; text-decoration: none; }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Grain texture overlay for patina feel */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.08;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        
+        /* 90s style accents */
+        h1, h2, h3 {
+            text-transform: uppercase;
+        }
+        
+        h1 {
+            font-size: 4rem !important;
+            line-height: 1.1 !important;
+            background: linear-gradient(135deg, var(--rust) 0%, var(--aged-bronze) 50%, var(--copper-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h1 span {
+            -webkit-text-fill-color: var(--copper-green) !important;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26,26,26,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 2px solid var(--rust);
+        }
+        
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+        
+        .logo {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.8rem;
+            color: var(--rust);
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rust), var(--copper-green), transparent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover { color: var(--rust); }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-dark) 100%);
+        }
+        
+        /* 90s style geometric accents */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(255,107,53,0.15) 0%, transparent 60%);
+            filter: blur(60px);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(0,255,157,0.1) 0%, transparent 60%);
+            filter: blur(80px);
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+        
+        .hero-content h1 span {
+            color: var(--rust);
+            position: relative;
+        }
+        
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 36px;
+            max-width: 420px;
+            line-height: 1.7;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: var(--rust);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid var(--rust);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--rust);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255,107,53,0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--copper-green);
+            color: var(--copper-green);
+            margin-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .btn-outline:hover {
+            background: var(--copper-green);
+            color: var(--bg);
+            box-shadow: 0 0 20px rgba(0,255,157,0.4);
+        }
+        
+        /* Hero featured bike display */
+        .hero-visual {
+            position: relative;
+        }
+        
+        .featured-bike {
+            background: var(--bg-card);
+            border: 1px solid var(--rust);
+            padding: 24px;
+            position: relative;
+        }
+        
+        /* Rust corner accents */
+        .featured-bike::before,
+        .featured-bike::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--rust);
+            opacity: 0.4;
+        }
+        
+        .featured-bike::before {
+            top: -8px;
+            left: -8px;
+            border-right: none;
+            border-bottom: none;
+        }
+        
+        .featured-bike::after {
+            bottom: -8px;
+            right: -8px;
+            border-left: none;
+            border-top: none;
+        }
+        
+        .featured-bike-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(145deg, #e8e4dc 0%, #d8d4cc 100%);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Weathered texture on images */
+        .featured-bike-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 30% 70%, rgba(139,74,43,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(74,107,93,0.04) 0%, transparent 40%);
+        }
+        
+        .featured-bike-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-label {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--rust);
+            color: #fff;
+            padding: 6px 14px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        
+        .featured-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .featured-info h3 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+        
+        .featured-info .brand {
+            font-size: 0.8rem;
+            color: var(--copper-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .featured-info .price {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.8rem;
+            color: var(--rust);
+        }
+        
+        /* Stats bar with patina border */
+        .stats-bar {
+            background: var(--bg-dark);
+            color: var(--warm-cream);
+            padding: 48px 0;
+            position: relative;
+        }
+        
+        .stats-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                var(--rust) 0%, 
+                var(--rust-light) 25%, 
+                var(--copper-green) 50%, 
+                var(--oxidized) 75%, 
+                var(--aged-bronze) 100%
+            );
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+        }
+        
+        .stat h3 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 2.5rem;
+            margin-bottom: 4px;
+        }
+        
+        .stat p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            opacity: 0.6;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rust);
+        }
+        
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 2.2rem;
+        }
+        
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Product grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+        
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(138,132,122,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(26,23,20,0.1);
+        }
+        
+        .product-card.sold {
+            opacity: 0.7;
+        }
+        
+        .product-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(145deg, #eae6de, #ddd9d1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(139,74,43,0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 10%, rgba(74,107,93,0.04) 0%, transparent 40%);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            gap: 8px;
+        }
+        
+        .product-placeholder svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--weathered);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--rust);
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        
+        .product-badge.sold-badge {
+            background: var(--copper-green);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-brand {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--copper-green);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .product-name {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+        
+        .product-year {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(138,132,122,0.15);
+        }
+        
+        .product-price {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.3rem;
+            color: var(--rust);
+        }
+        
+        .product-card.sold .product-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+        
+        .product-link {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .product-link:hover { color: var(--rust); }
+        
+        /* About with patina styling */
+        .about-section {
+            background: var(--warm-cream);
+            position: relative;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-image {
+            aspect-ratio: 1/1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-slide.active {
+            opacity: 1;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .gallery-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .gallery-dot.active {
+            background: var(--rust);
+        }
+        
+        .gallery-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            box-sizing: border-box;
+            z-index: 10;
+        }
+        
+        .gallery-arrow {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.8);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .gallery-arrow:hover {
+            background: var(--rust);
+            color: white;
+        }
+        
+        .step-counter {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--rust);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        /* Rust frame effect */
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border: 2px solid transparent;
+            border-image: linear-gradient(135deg, var(--rust), var(--copper-green), var(--aged-bronze)) 1;
+            z-index: 5;
+            pointer-events: none;
+        }
+        
+        .about-content h2 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 2rem;
+            margin-bottom: 24px;
+        }
+        
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+        
+        .contact-info h3 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 28px;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-label {
+            color: var(--text-muted);
+            min-width: 80px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--rust);
+            font-family: inherit;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            transition: border-color 0.2s;
+        }
+        
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--rust);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: var(--warm-cream);
+            padding: 48px 0;
+        }
+        
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.3rem;
+            color: var(--rust-light);
+        }
+        
+        .footer-text {
+            opacity: 0.5;
+            font-size: 0.85rem;
+        }
+        
+        /* Story Section */
+        .story-section {
+            background: var(--cream);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .story-quote {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: var(--rust);
+            margin-bottom: 24px;
+        }
+        
+        .story-text p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        
+        .story-signature {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-top: 24px;
+        }
+        
+        /* Shipping Section */
+        .shipping-section {
+            background: var(--warm-cream);
+        }
+        
+        .shipping-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .shipping-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .shipping-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .shipping-card h3 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .shipping-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Condition Guide */
+        .condition-section {
+            background: var(--cream);
+        }
+        
+        .condition-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .condition-item {
+            text-align: center;
+            padding: 30px 15px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .condition-score {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 2rem;
+            color: var(--rust);
+            margin-bottom: 10px;
+        }
+        
+        .condition-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .condition-desc {
+            color: var(--text-light);
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+        
+        /* Request/Wishlist Section */
+        .request-section {
+            background: linear-gradient(135deg, var(--aged-bronze) 0%, var(--rust) 100%);
+            color: white;
+        }
+        
+        .request-section .section-header h2,
+        .request-section .section-header p {
+            color: white;
+        }
+        
+        .request-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .request-info h3 {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+        
+        .request-info p {
+            opacity: 0.9;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .request-brands {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .request-brand {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            border-radius: 20px;
+        }
+        
+        .request-form input,
+        .request-form select,
+        .request-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 0.95rem;
+        }
+        
+        .request-form input::placeholder,
+        .request-form textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .request-form select {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .request-form select option {
+            color: var(--text);
+            background: white;
+        }
+        
+        .request-form .btn {
+            width: 100%;
+            background: white;
+            color: var(--rust);
+            border: none;
+            padding: 14px;
+            font-weight: 600;
+        }
+        
+        .request-form .btn:hover {
+            background: var(--cream);
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: var(--warm-cream);
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 30px auto 0;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.95rem;
+        }
+        
+        .newsletter-form .btn {
+            white-space: nowrap;
+        }
+        
+        .newsletter-note {
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        /* Instagram Section */
+        .instagram-section {
+            background: var(--cream);
+            text-align: center;
+        }
+        
+        .instagram-placeholder {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .instagram-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #d8d4c8, #c8c4b8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0.5;
+        }
+        
+        .instagram-cta {
+            margin-top: 30px;
+        }
+        
+        .instagram-handle {
+            font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em;
+            font-size: 1.2rem;
+            color: var(--rust);
+            text-decoration: none;
+        }
+        
+        .instagram-handle:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-grid, .about-grid, .contact-grid, .story-grid, .request-grid { 
+                grid-template-columns: 1fr; 
+                gap: 48px; 
+            }
+            .hero { min-height: auto; padding: 100px 0 60px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+            .nav-links { display: none; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .shipping-grid { grid-template-columns: 1fr; gap: 20px; }
+            .condition-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .instagram-placeholder { grid-template-columns: repeat(2, 1fr); }
+            .newsletter-form { flex-direction: column; }
+        }
+        
+        @media (max-width: 500px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .condition-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-inner">
+                <a href="#" class="logo">PAT INA</a>
+                <div class="nav-links">
+                    <a href="#collection">Collection</a>
+                    <a href="#sold">Sold</a>
+                    <a href="#about">Story</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>RADICAL STEEL.<br><span style="color:var(--copper-green)">GNARLY PATINA.</span></h1>
+                    <p>Hand-picked shred machines from the golden era of MTB. Original battle scars preserved. Every dent tells a story. Every scratch earned sending it.</p>
+                    <a href="#collection" class="btn btn-primary">VIEW COLLECTION</a>
+                    <a href="#contact" class="btn btn-outline">Contact</a>
+                </div>
+                <div class="hero-visual">
+                    <div class="featured-bike">
+                        <div class="featured-bike-image">
+                            <span class="featured-label">Featured</span>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG/600px-Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG" alt="Featured vintage MTB">
+                        </div>
+                        <div class="featured-info">
+                            <div>
+                                <div class="brand">Klein</div>
+                                <h3>Attitude Race</h3>
+                            </div>
+                            <div class="price">€1,290</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat">
+                    <h3 id="stat-available">5</h3>
+                    <p>Available</p>
+                </div>
+                <div class="stat">
+                    <h3 id="stat-sold">3</h3>
+                    <p>Sold</p>
+                </div>
+                <div class="stat">
+                    <h3>1985-99</h3>
+                    <p>Era</p>
+                </div>
+                <div class="stat">
+                    <h3>EU</h3>
+                    <p>Shipping</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="collection">
+        <div class="container">
+            <div class="section-header">
+                <h2>AVAILABLE NOW</h2>
+                <p>Original condition. Patina preserved.</p>
+            </div>
+            <div class="product-grid" id="available-grid"></div>
+        </div>
+    </section>
+    
+    <section id="sold" style="background: var(--warm-cream)">
+        <div class="container">
+            <div class="section-header">
+                <h2>RECENTLY SOLD</h2>
+                <p>Found new homes.</p>
+            </div>
+            <div class="product-grid" id="sold-grid"></div>
+        </div>
+    </section>
+    
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="gallery-container" id="process-gallery">
+                        <div class="step-counter">Step <span id="step-num">1</span>/9</div>
+                        <div class="gallery-arrows">
+                            <button class="gallery-arrow" onclick="prevSlide()">←</button>
+                            <button class="gallery-arrow" onclick="nextSlide()">→</button>
+                        </div>
+                        <div class="gallery-nav" id="gallery-dots"></div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h2 id="process-title">PRESERVED, NOT POLISHED</h2>
+                    <p id="process-text-1">Every bike here carries its history. The scratches from rocky descents. The worn decals from decades of storage. The honest patina of a machine that was ridden, not displayed.</p>
+                    <p id="process-text-2">I don't strip and repaint. I don't hide the dents. I clean, service, and preserve. What you get is authentic - a time capsule from mountain biking's defining years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- My Story Section -->
+    <section id="story" class="story-section section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image" style="aspect-ratio:1;background:linear-gradient(135deg, #d8d4c8, #c8c4b8);display:flex;align-items:center;justify-content:center;">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="opacity:0.3">
+                        <circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/>
+                        <path d="M12 17l-3-6h6l-3 6zM5 17l4-8h6M19 17l-4-8"/>
+                    </svg>
+                </div>
+                <div class="story-text">
+                    <p class="story-quote">"I DON'T FLIP BIKES. I RESCUE THEM."</p>
+                    <p>It started with a gnarly Zaskar I scored in some barn in Austria. Everyone said strip it, repaint it, make it look fresh. But that felt totally bogus—like erasing 30 years of rad history.</p>
+                    <p>That bike had stories in every scratch. Trail dust embedded in places no brush could reach. A sick dent on the top tube from some forgotten send in the 90s. Who was I to erase all that?</p>
+                    <p>So I cleaned it. Dialed it in. Protected the patina with clear coat. And when I posted it, people went stoked. They didn't want showroom-perfect restorations. They wanted the real deal. Time capsules from the golden era.</p>
+                    <p>Now I hunt for these machines across Europe. I bring them back to life without taking away their soul. Every bike here was shredding trails before most of us were born. They earned their battle scars.</p>
+                    <p class="story-signature">— THE CURATOR, PAT INA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Condition Guide Section -->
+    <section id="condition" class="condition-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>CONDITION GUIDE</h2>
+                <p>Honest ratings. No surprises.</p>
+            </div>
+            <div class="condition-grid">
+                <div class="condition-item">
+                    <div class="condition-score">10</div>
+                    <div class="condition-label">Museum</div>
+                    <div class="condition-desc">Unridden or like-new. Original everything. Collector grade.</div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-score">8-9</div>
+                    <div class="condition-label">Excellent</div>
+                    <div class="condition-desc">Light use. Minor cosmetic wear. All original parts.</div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-score">6-7</div>
+                    <div class="condition-label">Good</div>
+                    <div class="condition-desc">Honest patina. Normal wear. May have replacement parts.</div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-score">4-5</div>
+                    <div class="condition-label">Fair</div>
+                    <div class="condition-desc">Heavy patina. Visible wear. Rides well, looks loved.</div>
+                </div>
+                <div class="condition-item">
+                    <div class="condition-score">1-3</div>
+                    <div class="condition-label">Project</div>
+                    <div class="condition-desc">Needs work. For builders and collectors. Priced accordingly.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping Section -->
+    <section id="shipping" class="shipping-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>SHIPPING & DELIVERY</h2>
+                <p>Safe transport across Europe.</p>
+            </div>
+            <div class="shipping-grid">
+                <div class="shipping-card">
+                    <div class="shipping-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <h3>Professional Packing</h3>
+                    <p>Every bike is carefully disassembled and packed in a reinforced bike box with foam padding. Handlebars, pedals, and wheels protected separately.</p>
+                </div>
+                <div class="shipping-card">
+                    <div class="shipping-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="1" y="6" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v3h-7v-6z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Insured Shipping</h3>
+                    <p>Full insurance coverage on every shipment. Tracked delivery through DPD or GLS. Typical delivery: 3-7 business days within EU.</p>
+                </div>
+                <div class="shipping-card">
+                    <div class="shipping-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Slovenia/Austria: €30-40. Germany/Italy: €50-70. Rest of EU: €70-100. Local pickup in Slovenia always free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request/Wishlist Section -->
+    <section id="request" class="request-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>LOOKING FOR SOMETHING?</h2>
+                <p>Tell me what you're hunting for.</p>
+            </div>
+            <div class="request-grid">
+                <div class="request-info">
+                    <h3>Can't find your dream bike?</h3>
+                    <p>I'm always hunting. If you're looking for a specific model, year, or colorway, let me know. I'll keep an eye out and contact you when I find it.</p>
+                    <p>No fees, no commitment. Just a network of vintage MTB hunters working together.</p>
+                    <div class="request-brands">
+                        <span class="request-brand">Klein</span>
+                        <span class="request-brand">Yeti</span>
+                        <span class="request-brand">Fat Chance</span>
+                        <span class="request-brand">GT</span>
+                        <span class="request-brand">Specialized</span>
+                        <span class="request-brand">Ritchey</span>
+                        <span class="request-brand">Trek</span>
+                        <span class="request-brand">Bontrager</span>
+                    </div>
+                </div>
+                <form class="request-form" onsubmit="handleRequest(event)">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="" disabled selected>What are you looking for?</option>
+                        <option>Specific model (I'll describe below)</option>
+                        <option>Any Klein</option>
+                        <option>Any Yeti</option>
+                        <option>Any Fat Chance</option>
+                        <option>Any GT Zaskar</option>
+                        <option>Any Specialized Stumpjumper</option>
+                        <option>Any steel hardtail from 85-95</option>
+                        <option>Something else</option>
+                    </select>
+                    <textarea placeholder="Details: model, year, color, budget, frame size..." rows="3"></textarea>
+                    <button type="submit" class="btn">Add Me to the Hunt</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="newsletter-section section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;">
+                <h2>GET NOTIFIED</h2>
+                <p>New bikes drop without warning. Be the first to know.</p>
+            </div>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+            <p class="newsletter-note">No spam. Just bikes. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Instagram Section (Placeholder) -->
+    <section id="instagram" class="instagram-section section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;">
+                <h2>FOLLOW THE HUNT</h2>
+                <p>Behind the scenes. New finds. Workshop life.</p>
+            </div>
+            <div class="instagram-placeholder">
+                <div class="instagram-item"></div>
+                <div class="instagram-item"></div>
+                <div class="instagram-item"></div>
+                <div class="instagram-item"></div>
+            </div>
+            <div class="instagram-cta">
+                <a href="#" class="instagram-handle" id="instagram-link">@patina.mtb</a>
+                <p class="newsletter-note">Coming soon</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>GET IN TOUCH</h2>
+                <p>Questions welcome.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Location</h3>
+                    <p>Based in Slovenia. Local pickup available. Shipping arranged throughout Europe.</p>
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span>hello@patina.bikes</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Response</span>
+                        <span>Within 24 hours</span>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleSubmit(event)">
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message"></textarea>
+                    <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">PAT INA</div>
+                <div class="footer-text">Vintage bikes, honest wear.</div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const inventory = {
+            available: [
+                {
+                    brand: 'Klein',
+                    name: 'Attitude Race',
+                    year: '1993',
+                    price: 1290,
+                    badge: 'Featured',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG/500px-Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG'
+                },
+                {
+                    brand: 'Specialized',
+                    name: 'Stumpjumper M2',
+                    year: '1991',
+                    price: 400,
+                    badge: 'Available',
+                    image: 'images/stumpjumper-m2.jpg'
+                },
+                {
+                    brand: 'GT',
+                    name: 'Zaskar LE',
+                    year: '1994',
+                    price: 850,
+                    badge: 'Rare',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/GT_Zaskar_2012.JPG/500px-GT_Zaskar_2012.JPG'
+                },
+                {
+                    brand: 'Ritchey',
+                    name: 'P-23',
+                    year: '1989',
+                    price: 1450,
+                    badge: null,
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Historical_Tom_Ritchey_Bicycles_%2817359667581%29.jpg/500px-Historical_Tom_Ritchey_Bicycles_%2817359667581%29.jpg'
+                },
+                {
+                    brand: 'Kuwahara',
+                    name: 'Cascade',
+                    year: '1988',
+                    price: 320,
+                    badge: 'New In',
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Sepeda_gunung_vintage.jpg/500px-Sepeda_gunung_vintage.jpg'
+                }
+            ],
+            sold: [
+                {
+                    brand: 'Yeti',
+                    name: 'ARC',
+                    year: '1992',
+                    price: 2100,
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Yeti_575.JPG/500px-Yeti_575.JPG'
+                },
+                {
+                    brand: 'Fat Chance',
+                    name: 'Yo Eddy',
+                    year: '1990',
+                    price: 1850,
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Fat_Chance_Kicker_Mountain_Bike.jpg/500px-Fat_Chance_Kicker_Mountain_Bike.jpg'
+                },
+                {
+                    brand: 'Bontrager',
+                    name: 'Race Lite',
+                    year: '1995',
+                    price: 920,
+                    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/CCM_mountain_bike.JPG/500px-CCM_mountain_bike.JPG'
+                }
+            ]
+        };
+        
+        const bikeIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/>
+            <path d="M12 17l-3-6h6l-3 6zM5 17l4-8h6M19 17l-4-8"/>
+        </svg>`;
+        
+        function renderProduct(item, isSold = false) {
+            return `
+                <article class="product-card ${isSold ? 'sold' : ''}">
+                    <div class="product-image">
+                        ${item.image 
+                            ? `<img src="${item.image}" alt="${item.name}">`
+                            : `<div class="product-placeholder">${bikeIcon}</div>`
+                        }
+                        ${item.badge && !isSold ? `<span class="product-badge">${item.badge}</span>` : ''}
+                        ${isSold ? `<span class="product-badge sold-badge">Sold</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-brand">${item.brand}</div>
+                        <h3 class="product-name">${item.name}</h3>
+                        <div class="product-year">${item.year}</div>
+                        <div class="product-footer">
+                            <span class="product-price">€${item.price.toLocaleString()}</span>
+                            ${!isSold ? `<a href="#contact" class="product-link">Inquire</a>` : ''}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+        
+        function render() {
+            document.getElementById('available-grid').innerHTML = 
+                inventory.available.map(b => renderProduct(b)).join('');
+            document.getElementById('sold-grid').innerHTML = 
+                inventory.sold.map(b => renderProduct(b, true)).join('');
+            document.getElementById('stat-available').textContent = inventory.available.length;
+            document.getElementById('stat-sold').textContent = inventory.sold.length;
+        }
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Message sent! I\'ll get back to you within 24 hours.');
+            e.target.reset();
+        }
+        
+        function handleRequest(e) {
+            e.preventDefault();
+            alert('You\'re on the hunt list! I\'ll contact you when I find something matching your criteria.');
+            e.target.reset();
+        }
+        
+        function handleNewsletter(e) {
+            e.preventDefault();
+            alert('You\'re subscribed! You\'ll be the first to know when new bikes drop.');
+            e.target.reset();
+        }
+        
+        // Process Gallery - 9 Steps of Patina Preservation (90s era images, no people)
+        const processSteps = [
+            {
+                image: 'images/stumpjumper-m2.jpg',
+                title: 'PRESERVED. NOT POLISHED.',
+                text1: 'Every bike here carries its history. The scratches from rocky descents. The worn decals from decades of storage. The honest patina of a machine that was ridden, not displayed.',
+                text2: 'Here\'s how I bring these time capsules back to life - without erasing their story.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG/600px-Klein_Attitude_Gossomer_Paint%3B_2008%2C_03._09.%2C_02.JPG',
+                title: 'Step 1: Assessment',
+                text1: 'Every project starts with a thorough inspection. I examine the frame for cracks, check bearing play, test the drivetrain, and document every scratch and dent.',
+                text2: 'This initial assessment tells me what the bike needs - and what character it already has that must be preserved.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Shimano_Exage_500_Derailleur.jpg/600px-Shimano_Exage_500_Derailleur.jpg',
+                title: 'Step 2: Careful Disassembly',
+                text1: 'The bike comes apart piece by piece. Every component is labeled and photographed. Original bolts, washers, and spacers are kept - they\'re part of the story.',
+                text2: 'Shimano Exage, Deore XT, SunTour XC Pro - these 90s groupsets are mechanical art. Each piece handled with care.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Britannica_Bicycle_Ball-Bearing_Hub.jpg/600px-Britannica_Bicycle_Ball-Bearing_Hub.jpg',
+                title: 'Step 3: Bearing Inspection',
+                text1: 'Headset, bottom bracket, hubs - all bearings are disassembled and inspected. Pitted races get replaced; healthy ones get fresh grease.',
+                text2: 'Cup and cone bearings from the 90s can last forever with proper service. The precision engineering of that era still impresses.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Shimano_xt_rear_derailleur.jpg/600px-Shimano_xt_rear_derailleur.jpg',
+                title: 'Step 4: Drivetrain Service',
+                text1: 'Derailleurs are disassembled, degreased, and re-lubricated. Pivot points freed, springs checked, limit screws adjusted.',
+                text2: 'A 30-year-old Shimano XT still shifts like butter with proper care. These were built to last generations.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Bicycle_Frame_Lemond_zurich_retouched.jpg/600px-Bicycle_Frame_Lemond_zurich_retouched.jpg',
+                title: 'Step 5: Gentle Cleaning',
+                text1: 'The frame gets cleaned with mild soap and soft brushes - never abrasive pads or harsh chemicals. The goal is clean, not shiny.',
+                text2: 'Original decals are treated like artifacts. That faded Klein gradient or Yeti logo is irreplaceable.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Rusty_bicycle_at_Hatfield_Broad_Oak%2C_Essex%2C_England.jpg/600px-Rusty_bicycle_at_Hatfield_Broad_Oak%2C_Essex%2C_England.jpg',
+                title: 'Step 6: Rust Stabilization',
+                text1: 'Surface rust isn\'t removed - it\'s converted. A rust converter chemically stabilizes the oxidation, turning it into a protective layer.',
+                text2: 'The patina stays, but it stops spreading. History preserved, not erased. Every scratch tells a story.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Sepeda_gunung_vintage.jpg/600px-Sepeda_gunung_vintage.jpg',
+                title: 'Step 7: Clear Coat Protection',
+                text1: 'A thin, matte clear coat seals the original paint and stabilized patina. It protects without adding shine or changing the character.',
+                text2: 'This is the secret to preservation: lock in what\'s there, don\'t cover it up. The bike keeps its soul.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/SHIMANO_RD-TY20_%28rear_derailleur%2C_1989%29.jpg/600px-SHIMANO_RD-TY20_%28rear_derailleur%2C_1989%29.jpg',
+                title: 'Step 8: Component Rebuild',
+                text1: 'Fresh cables and housing. New brake pads. Serviced hubs. The bike gets everything it needs to ride safely and smoothly.',
+                text2: 'Original 1989 Shimano components stay when possible. Period-correct replacements when needed. Authenticity matters.'
+            },
+            {
+                image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Fat_Chance_Kicker_Mountain_Bike.jpg/600px-Fat_Chance_Kicker_Mountain_Bike.jpg',
+                title: 'Step 9: Ready to Ride',
+                text1: 'Every bolt checked. Every function tested. Gears indexed. Brakes adjusted. The bike gets a test ride before photos.',
+                text2: 'What you see is what you get: a preserved time capsule from mountain biking\'s golden era, ready for another 30 years.'
+            }
+        ];
+        
+        let currentSlide = 0;
+        
+        function initGallery() {
+            const gallery = document.getElementById('process-gallery');
+            const dotsContainer = document.getElementById('gallery-dots');
+            
+            // Create slides
+            processSteps.forEach((step, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'gallery-slide' + (i === 0 ? ' active' : '');
+                slide.innerHTML = `<img src="${step.image}" alt="${step.title}">`;
+                gallery.insertBefore(slide, gallery.firstChild);
+                
+                const dot = document.createElement('div');
+                dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+            
+            updateText();
+        }
+        
+        function updateText() {
+            const step = processSteps[currentSlide];
+            document.getElementById('process-title').textContent = step.title;
+            document.getElementById('process-text-1').textContent = step.text1;
+            document.getElementById('process-text-2').textContent = step.text2;
+            document.getElementById('step-num').textContent = currentSlide + 1;
+            
+            document.querySelectorAll('.gallery-slide').forEach((s, i) => {
+                s.classList.toggle('active', i === (processSteps.length - 1 - currentSlide));
+            });
+            document.querySelectorAll('.gallery-dot').forEach((d, i) => {
+                d.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % processSteps.length;
+            updateText();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + processSteps.length) % processSteps.length;
+            updateText();
+        }
+        
+        function goToSlide(i) {
+            currentSlide = i;
+            updateText();
+        }
+        
+        render();
+        initGallery();
+    </script>
+</body>
+</html>
