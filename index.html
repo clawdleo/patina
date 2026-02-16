@@ -1161,6 +1161,37 @@
         }
         
         /* Newsletter Section */
+        /* Sourcing Request Section */
+        .sourcing-section {
+            background: linear-gradient(135deg, var(--warm-cream) 0%, var(--bg) 100%);
+            padding: 80px 0;
+        }
+        
+        .sourcing-form {
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+        
+        .sourcing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .sourcing-grid select:focus,
+        .sourcing-grid input:focus,
+        .sourcing-form textarea:focus {
+            outline: none;
+            border-color: var(--rust);
+        }
+        
+        @media (max-width: 768px) {
+            .sourcing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         .newsletter-section {
             background: var(--warm-cream);
             text-align: center;
@@ -1423,6 +1454,7 @@
                     <a href="#legends">Legends</a>
                     <a href="#about">Story</a>
                     <a href="#process">Process</a>
+                    <a href="#wanted">Wanted</a>
                     <a href="#faq">FAQ</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -1439,7 +1471,7 @@
         <a href="#about" onclick="closeMobileMenu()">Our Story</a>
         <a href="#process" onclick="closeMobileMenu()">Process</a>
         <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
-        <a href="#request" onclick="closeMobileMenu()">Wishlist</a>
+        <a href="#wanted" onclick="closeMobileMenu()">Wanted</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
     </div>
     
@@ -1858,6 +1890,52 @@
         </div>
     </section>
 
+    <!-- Sourcing Request Section -->
+    <section id="wanted" class="sourcing-section section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;">
+                <h2>Can't Find Your Dream Bike?</h2>
+                <p>Tell me what you're looking for. I'll hunt it down.</p>
+            </div>
+            <form class="sourcing-form" onsubmit="handleSourcingRequest(event)">
+                <div class="sourcing-grid">
+                    <select name="brand" required style="padding:16px 20px;border:1.5px solid var(--weathered);background:var(--bg-card);font-family:inherit;font-size:1rem;cursor:pointer;">
+                        <option value="" disabled selected>Select brand...</option>
+                        <option value="klein">👑 Klein</option>
+                        <option value="yeti">🏔️ Yeti</option>
+                        <option value="gt">⚡ GT</option>
+                        <option value="fat-chance">🎰 Fat Chance</option>
+                        <option value="ritchey">🔧 Ritchey</option>
+                        <option value="specialized">🚀 Specialized</option>
+                        <option value="breezer">🌲 Breezer</option>
+                        <option value="brodie">🍀 Brodie</option>
+                        <option value="merlin">✨ Merlin (Ti)</option>
+                        <option value="litespeed">⚡ Litespeed (Ti)</option>
+                        <option value="rocky-mountain">🏔️ Rocky Mountain</option>
+                        <option value="kona">🌋 Kona</option>
+                        <option value="trek">🚲 Trek</option>
+                        <option value="other">🔍 Other / Any</option>
+                    </select>
+                    <input type="text" name="model" placeholder="Model (e.g., Attitude, ARC, Zaskar)" style="padding:16px 20px;border:1.5px solid var(--weathered);background:var(--bg-card);font-family:inherit;font-size:1rem;">
+                    <select name="budget" style="padding:16px 20px;border:1.5px solid var(--weathered);background:var(--bg-card);font-family:inherit;font-size:1rem;cursor:pointer;">
+                        <option value="" disabled selected>Budget range...</option>
+                        <option value="under-500">Under €500</option>
+                        <option value="500-1000">€500 - €1,000</option>
+                        <option value="1000-2000">€1,000 - €2,000</option>
+                        <option value="2000-plus">€2,000+</option>
+                        <option value="no-limit">No limit for the right bike</option>
+                    </select>
+                    <input type="email" name="email" placeholder="Your email" required style="padding:16px 20px;border:1.5px solid var(--weathered);background:var(--bg-card);font-family:inherit;font-size:1rem;">
+                </div>
+                <textarea name="notes" placeholder="Any specific requirements? (year range, condition, color, frame size...)" style="width:100%;max-width:600px;margin:20px auto;display:block;padding:16px 20px;border:1.5px solid var(--weathered);background:var(--bg-card);font-family:inherit;font-size:1rem;min-height:100px;resize:vertical;"></textarea>
+                <div style="text-align:center;">
+                    <button type="submit" class="btn btn-primary">Add Me to the Hunt</button>
+                </div>
+            </form>
+            <p class="sourcing-note" style="text-align:center;margin-top:16px;color:var(--text-muted);font-size:0.85rem;">10% finder's fee only when you buy. No obligation.</p>
+        </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section id="newsletter" class="newsletter-section section">
         <div class="container">
@@ -2118,6 +2196,24 @@
         function handleNewsletter(e) {
             e.preventDefault();
             alert('You\'re subscribed! You\'ll be the first to know when new bikes drop.');
+            e.target.reset();
+        }
+        
+        function handleSourcingRequest(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const brand = formData.get('brand');
+            const model = formData.get('model') || 'any model';
+            const budget = formData.get('budget');
+            
+            const brandNames = {
+                'klein': 'Klein', 'yeti': 'Yeti', 'gt': 'GT', 'fat-chance': 'Fat Chance',
+                'ritchey': 'Ritchey', 'specialized': 'Specialized', 'breezer': 'Breezer',
+                'brodie': 'Brodie', 'merlin': 'Merlin', 'litespeed': 'Litespeed',
+                'rocky-mountain': 'Rocky Mountain', 'kona': 'Kona', 'trek': 'Trek', 'other': 'your dream bike'
+            };
+            
+            alert(`🎯 The hunt is on!\n\nI'll start looking for a ${brandNames[brand]} ${model}.\n\nYou'll get an email when I find something matching your criteria. No obligation - 10% finder's fee only if you buy.\n\nHappy hunting!`);
             e.target.reset();
         }
         
