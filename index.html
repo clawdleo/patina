@@ -875,6 +875,80 @@
             font-size: 0.85rem;
         }
         
+        /* Legends Section */
+        .legends-section {
+            background: var(--charcoal);
+            padding: 100px 0;
+        }
+        
+        .legends-section .section-header h2,
+        .legends-section .section-header p {
+            color: var(--cream);
+        }
+        
+        .legends-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        
+        .legend-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .legend-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--retro-orange);
+            transform: translateY(-4px);
+        }
+        
+        .legend-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        
+        .legend-card h3 {
+            color: var(--cream);
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+        }
+        
+        .legend-years {
+            display: inline-block;
+            color: var(--retro-orange);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        
+        .legend-card p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 1024px) {
+            .legends-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .legends-grid {
+                grid-template-columns: 1fr;
+            }
+            .legend-card {
+                padding: 24px 20px;
+            }
+        }
+        
         /* Story Section */
         .story-section {
             background: var(--cream);
@@ -1231,6 +1305,7 @@
                 <div class="nav-links">
                     <a href="#collection">Collection</a>
                     <a href="#sold">Sold</a>
+                    <a href="#legends">Legends</a>
                     <a href="#about">Story</a>
                     <a href="#faq">FAQ</a>
                     <a href="#contact">Contact</a>
@@ -1244,6 +1319,7 @@
     <div class="mobile-nav" id="mobile-nav">
         <a href="#collection" onclick="closeMobileMenu()">Collection</a>
         <a href="#sold" onclick="closeMobileMenu()">Sold</a>
+        <a href="#legends" onclick="closeMobileMenu()">Legends</a>
         <a href="#about" onclick="closeMobileMenu()">Our Story</a>
         <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
         <a href="#request" onclick="closeMobileMenu()">Wishlist</a>
@@ -1338,6 +1414,66 @@
                     <h2 id="process-title">Preserved, Not Polished</h2>
                     <p id="process-text-1">Every bike here carries its history. The scratches from rocky descents. The worn decals from decades of storage. The honest patina of a machine that was ridden, not displayed.</p>
                     <p id="process-text-2">I don't strip and repaint. I don't hide the dents. I clean, service, and preserve. What you get is authentic - a time capsule from mountain biking's defining years.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Legends We Hunt Section -->
+    <section id="legends" class="legends-section section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Legends We Hunt</h2>
+                <p>The bikes that defined an era. The names that matter.</p>
+            </div>
+            <div class="legends-grid">
+                <div class="legend-card">
+                    <div class="legend-icon">👑</div>
+                    <h3>Klein</h3>
+                    <span class="legend-years">1985-2002</span>
+                    <p>The king of aluminum. Oversized tubes, iconic paintwork, Attitude and Adroit. Gary Klein revolutionized frame design. The "Sea & Sky" Adroit is the holy grail.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">🏔️</div>
+                    <h3>Yeti</h3>
+                    <span class="legend-years">1985-present</span>
+                    <p>Born in the Colorado mountains. The FRO and ARC are pure racing DNA. That turquoise color is instantly recognizable. Missy Giove's weapon of choice.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">⚡</div>
+                    <h3>GT</h3>
+                    <span class="legend-years">1979-present</span>
+                    <p>The Zaskar changed everything. Triple triangle design. Aircraft-grade aluminum. Hans Rey made these famous doing what seemed impossible.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">🎰</div>
+                    <h3>Fat Chance</h3>
+                    <span class="legend-years">1982-2000</span>
+                    <p>Chris Chance in Somerville, MA. Small-batch perfection. The Yo Eddy! is the steel hardtail everyone dreams about. Handmade in America.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">🔧</div>
+                    <h3>Ritchey</h3>
+                    <span class="legend-years">1974-present</span>
+                    <p>Tom Ritchey: The Godfather. Built frames in his garage before "mountain bike" was even a term. The P-series set the template. Components still legendary.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">🚀</div>
+                    <h3>Specialized</h3>
+                    <span class="legend-years">1974-present</span>
+                    <p>The Stumpjumper (1981) was the first mass-produced mountain bike. Period. That makes it historically priceless. Early S-Works are collector gold.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">🌲</div>
+                    <h3>Breezer</h3>
+                    <span class="legend-years">1977-present</span>
+                    <p>Joe Breeze built the first purpose-built mountain bike frame. The Series I is literally where it all began. Marin County royalty. Museum pieces.</p>
+                </div>
+                <div class="legend-card">
+                    <div class="legend-icon">🍀</div>
+                    <h3>Brodie</h3>
+                    <span class="legend-years">1986-2004</span>
+                    <p>Canadian cult classic from Vancouver. Paul Brodie's Romax and Catalyst are North Shore legends. Steel frames with personality. Rare in Europe.</p>
                 </div>
             </div>
         </div>
