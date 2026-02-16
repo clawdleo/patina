@@ -1190,6 +1190,101 @@
             color: var(--text-muted);
         }
         
+        /* How It Works Section */
+        .process-section {
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 80px 0;
+        }
+        
+        .process-section .section-header h2 {
+            color: #fff;
+        }
+        
+        .process-section .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 40px;
+            font-size: 1.5rem;
+            color: var(--rust-light);
+            opacity: 0.6;
+        }
+        
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--rust), var(--rust-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+        
+        .process-number {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--rust);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .process-step h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--warm-cream);
+        }
+        
+        .process-step p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 900px) {
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-step:not(:last-child)::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+        
         /* FAQ Section */
         .faq-section {
             background: var(--bg);
@@ -1327,6 +1422,7 @@
                     <a href="#sold">Sold</a>
                     <a href="#legends">Legends</a>
                     <a href="#about">Story</a>
+                    <a href="#process">Process</a>
                     <a href="#faq">FAQ</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -1341,6 +1437,7 @@
         <a href="#sold" onclick="closeMobileMenu()">Sold</a>
         <a href="#legends" onclick="closeMobileMenu()">Legends</a>
         <a href="#about" onclick="closeMobileMenu()">Our Story</a>
+        <a href="#process" onclick="closeMobileMenu()">Process</a>
         <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
         <a href="#request" onclick="closeMobileMenu()">Wishlist</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
@@ -1637,6 +1734,42 @@
                     <textarea placeholder="Details: model, year, color, budget, frame size..." rows="3"></textarea>
                     <button type="submit" class="btn">Add Me to the Hunt</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>From barn find to your door.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="process-number">1</span>
+                    <div class="process-icon">🔍</div>
+                    <h3>I Scout</h3>
+                    <p>Hunting across Austria, Germany, Slovenia, and beyond. Barn finds, estate sales, collector sales. I find the diamonds in the rough.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-number">2</span>
+                    <div class="process-icon">✓</div>
+                    <h3>I Select</h3>
+                    <p>Only original paint and patina. No resprays, no frankenbikes. I verify authenticity through serial numbers, decals, and component dating.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-number">3</span>
+                    <div class="process-icon">🔧</div>
+                    <h3>I Service</h3>
+                    <p>Full mechanical refresh. Fresh bearings, new cables, indexed gears, adjusted brakes. Ride-ready while preserving the patina.</p>
+                </div>
+                <div class="process-step">
+                    <span class="process-number">4</span>
+                    <div class="process-icon">📦</div>
+                    <h3>I Deliver</h3>
+                    <p>Professional packing in bike-specific boxes. Insured shipping across Europe. Arrives exactly as photographed. Your time capsule, protected.</p>
+                </div>
             </div>
         </div>
     </section>
