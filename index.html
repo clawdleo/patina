@@ -1439,6 +1439,91 @@
             .product-grid { grid-template-columns: 1fr; }
             .condition-grid { grid-template-columns: 1fr; }
         }
+        
+        /* Collector's Toolkit Section */
+        .toolkit-section {
+            background: var(--warm-cream);
+        }
+        
+        .toolkit-section .section-header h2 {
+            color: var(--text);
+        }
+        
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .toolkit-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(138,132,122,0.15);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+        
+        .toolkit-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--rust-light);
+            box-shadow: 0 12px 40px rgba(139,74,43,0.1);
+        }
+        
+        .toolkit-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--rust), var(--rust-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .toolkit-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        
+        .toolkit-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        
+        .toolkit-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .toolkit-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--rust);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .toolkit-link:hover {
+            color: var(--rust-light);
+        }
+        
+        .toolkit-link::before {
+            content: '→';
+            font-size: 0.8em;
+        }
+        
+        @media (max-width: 900px) {
+            .toolkit-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -1456,6 +1541,7 @@
                     <a href="#process">Process</a>
                     <a href="#wanted">Wanted</a>
                     <a href="#faq">FAQ</a>
+                    <a href="#toolkit">Toolkit</a>
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
@@ -1472,6 +1558,7 @@
         <a href="#process" onclick="closeMobileMenu()">Process</a>
         <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
         <a href="#wanted" onclick="closeMobileMenu()">Wanted</a>
+        <a href="#toolkit" onclick="closeMobileMenu()">Toolkit</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
     </div>
     
@@ -2001,6 +2088,78 @@
                     <span style="color:white;font-weight:500;">MTBR Vintage Forum</span>
                     <span style="color:var(--text-muted);">•</span>
                     <span style="color:white;font-weight:500;">r/xbiking</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collector's Toolkit Section -->
+    <section id="toolkit" class="toolkit-section section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;">
+                <h2>Collector's Toolkit</h2>
+                <p style="color:var(--text-muted);">Essential resources for vintage MTB enthusiasts</p>
+            </div>
+            <div class="toolkit-grid">
+                <div class="toolkit-card">
+                    <div class="toolkit-icon">📚</div>
+                    <h3>Original Catalogs</h3>
+                    <p>Period-correct specs, geometry charts, and colorways from the golden era.</p>
+                    <div class="toolkit-links">
+                        <a href="https://www.retrobike.co.uk/gallery2/main.php" target="_blank" class="toolkit-link">Retrobike Catalog Archive</a>
+                        <a href="https://www.mtb-kataloge.de/" target="_blank" class="toolkit-link">MTB-Kataloge.de (German)</a>
+                        <a href="https://www.bikepedia.com/" target="_blank" class="toolkit-link">Bikepedia Database</a>
+                    </div>
+                </div>
+                <div class="toolkit-card">
+                    <div class="toolkit-icon">🔧</div>
+                    <h3>Parts Sources</h3>
+                    <p>Where to find NOS and period-correct components for your build.</p>
+                    <div class="toolkit-links">
+                        <a href="https://www.ebay.com/b/Vintage-Bicycle-Parts/56195/bn_1865279" target="_blank" class="toolkit-link">eBay Vintage Parts</a>
+                        <a href="https://retrobike.co.uk/forum/viewforum.php?f=5" target="_blank" class="toolkit-link">Retrobike For Sale</a>
+                        <a href="https://www.mtbr.com/forums/vintage-retro-fat/" target="_blank" class="toolkit-link">MTBR Vintage Forum</a>
+                    </div>
+                </div>
+                <div class="toolkit-card">
+                    <div class="toolkit-icon">💬</div>
+                    <h3>Communities</h3>
+                    <p>Connect with fellow collectors, share finds, and learn from the experts.</p>
+                    <div class="toolkit-links">
+                        <a href="https://retrobike.co.uk" target="_blank" class="toolkit-link">Retrobike.co.uk Forum</a>
+                        <a href="https://www.reddit.com/r/xbiking/" target="_blank" class="toolkit-link">r/xbiking on Reddit</a>
+                        <a href="https://www.facebook.com/groups/vintagemtb" target="_blank" class="toolkit-link">Vintage MTB Facebook</a>
+                    </div>
+                </div>
+                <div class="toolkit-card">
+                    <div class="toolkit-icon">🔍</div>
+                    <h3>Serial Number Lookup</h3>
+                    <p>Date your frame and verify authenticity with serial number resources.</p>
+                    <div class="toolkit-links">
+                        <a href="https://www.bikepedia.com/serialnumber" target="_blank" class="toolkit-link">Bikepedia Serial Database</a>
+                        <a href="https://bikeindex.org/serials" target="_blank" class="toolkit-link">Bike Index Registry</a>
+                        <a href="https://retrobike.co.uk/forum/viewforum.php?f=14" target="_blank" class="toolkit-link">Retrobike Dating Help</a>
+                    </div>
+                </div>
+                <div class="toolkit-card">
+                    <div class="toolkit-icon">📖</div>
+                    <h3>History & Stories</h3>
+                    <p>The legends, the races, and the people who built the sport.</p>
+                    <div class="toolkit-links">
+                        <a href="https://mombat.org/" target="_blank" class="toolkit-link">MOMBAT Museum</a>
+                        <a href="https://www.youtube.com/results?search_query=vintage+mtb+documentary" target="_blank" class="toolkit-link">Documentary Films</a>
+                        <a href="https://www.amazon.com/Mountain-Bike-Book-Rob-Van/dp/0933201036" target="_blank" class="toolkit-link">Classic MTB Books</a>
+                    </div>
+                </div>
+                <div class="toolkit-card">
+                    <div class="toolkit-icon">🛒</div>
+                    <h3>Marketplaces</h3>
+                    <p>Hunt for your grail across European classifieds and auctions.</p>
+                    <div class="toolkit-links">
+                        <a href="https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz/fahrraeder-radsport/fahrraeder-5800" target="_blank" class="toolkit-link">willhaben.at (Austria)</a>
+                        <a href="https://www.bolha.com/kolesarstvo" target="_blank" class="toolkit-link">bolha.com (Slovenia)</a>
+                        <a href="https://www.njuskalo.hr/bicikli" target="_blank" class="toolkit-link">njuskalo.hr (Croatia)</a>
+                    </div>
                 </div>
             </div>
         </div>
