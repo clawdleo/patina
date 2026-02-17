@@ -1594,6 +1594,7 @@
                 <div class="nav-links">
                     <a href="#collection">Collection</a>
                     <a href="#sold">Sold</a>
+                    <a href="#radar">Radar</a>
                     <a href="#legends">Legends</a>
                     <a href="#about">Story</a>
                     <a href="#process">Process</a>
@@ -1613,6 +1614,7 @@
     <div class="mobile-nav" id="mobile-nav">
         <a href="#collection" onclick="closeMobileMenu()">Collection</a>
         <a href="#sold" onclick="closeMobileMenu()">Sold</a>
+        <a href="#radar" onclick="closeMobileMenu()">Radar</a>
         <a href="#legends" onclick="closeMobileMenu()">Legends</a>
         <a href="#about" onclick="closeMobileMenu()">Our Story</a>
         <a href="#process" onclick="closeMobileMenu()">Process</a>
@@ -1693,6 +1695,118 @@
             </div>
             <div class="product-grid" id="sold-grid"></div>
         </div>
+    </section>
+
+    <!-- On the Radar Section - Active Sourcing Leads -->
+    <section id="radar" class="radar-section" style="background: linear-gradient(135deg, #1a1714 0%, #252220 100%); color: white;">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;border-bottom:none;">
+                <div style="display:inline-flex;align-items:center;gap:8px;background:var(--rust);color:white;padding:6px 16px;border-radius:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;">
+                    <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;"></span>
+                    Live Market Intel
+                </div>
+                <h2 style="color:white;font-family:'DM Serif Display',serif;font-size:2.2rem;">On the Radar</h2>
+                <p style="color:rgba(255,255,255,0.7);max-width:600px;margin:12px auto 0;">Bikes we're actively tracking across European marketplaces. These are real finds — not yet acquired. Interested? Let us know before they're gone.</p>
+            </div>
+            <div class="radar-grid" id="radar-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-top:48px;"></div>
+            <div style="text-align:center;margin-top:40px;">
+                <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:16px;">Updated daily from willhaben.at, bolha.com, njuskalo.hr, eBay</p>
+                <a href="#wanted" class="btn" style="background:transparent;border:1.5px solid var(--rust-light);color:var(--rust-light);">Alert Me on New Finds →</a>
+            </div>
+        </div>
+        <style>
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+            .radar-card {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 12px;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            .radar-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--rust-light);
+                box-shadow: 0 12px 40px rgba(139,74,43,0.2);
+            }
+            .radar-image {
+                aspect-ratio: 4/3;
+                background: linear-gradient(145deg, #2a2520, #1a1714);
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .radar-image svg {
+                width: 48px;
+                height: 48px;
+                stroke: rgba(255,255,255,0.2);
+            }
+            .radar-badge {
+                position: absolute;
+                top: 12px;
+                left: 12px;
+                padding: 5px 12px;
+                font-size: 0.65rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                border-radius: 4px;
+            }
+            .radar-badge.grail { background: #dc2626; color: white; }
+            .radar-badge.hot { background: #ea580c; color: white; }
+            .radar-badge.sleeper { background: #7c3aed; color: white; }
+            .radar-badge.new { background: #059669; color: white; }
+            .radar-info {
+                padding: 20px;
+            }
+            .radar-brand {
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--rust-light);
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+            .radar-name {
+                font-family: 'DM Serif Display', serif;
+                font-size: 1.15rem;
+                margin-bottom: 2px;
+                color: white;
+            }
+            .radar-year {
+                font-size: 0.85rem;
+                color: rgba(255,255,255,0.5);
+            }
+            .radar-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 16px;
+                padding-top: 14px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+            .radar-price {
+                font-family: 'DM Serif Display', serif;
+                font-size: 1.3rem;
+                color: var(--rust-light);
+            }
+            .radar-location {
+                font-size: 0.75rem;
+                color: rgba(255,255,255,0.4);
+            }
+            .radar-note {
+                font-size: 0.8rem;
+                color: rgba(255,255,255,0.6);
+                margin-top: 12px;
+                padding: 10px 12px;
+                background: rgba(255,255,255,0.03);
+                border-radius: 6px;
+                line-height: 1.5;
+            }
+        </style>
     </section>
     
     <section id="about" class="about-section">
@@ -2457,6 +2571,54 @@
     </footer>
     
     <script>
+        // On the Radar - Active Sourcing Leads (updated daily)
+        const radarLeads = [
+            {
+                brand: 'Fat Chance',
+                name: 'Yo Eddy Team',
+                year: '1991',
+                price: 1900,
+                location: 'Salzburg, AT',
+                badge: 'grail',
+                badgeText: '🔥 Holy Grail',
+                note: 'Campagnolo Record OR wheelset. Original Team paint. Market value €3,500+. On market 3+ weeks — investigating why.',
+                url: 'willhaben.at'
+            },
+            {
+                brand: 'GT',
+                name: 'Team Avalanche "Midnight Aurora"',
+                year: '1991',
+                price: 399,
+                location: 'Wien, AT',
+                badge: 'new',
+                badgeText: '✨ New Find',
+                note: 'RARE 1-year-only colorway. Full XT spec, Manitou 1 fork, Made in USA Triple Triangle. Market value €800+.',
+                url: 'willhaben.at'
+            },
+            {
+                brand: 'Klein',
+                name: 'Attitude Comp',
+                year: '~1996',
+                price: 475,
+                location: 'Neumarkt, AT',
+                badge: 'hot',
+                badgeText: '⚡ Hot Deal',
+                note: 'Pearl paint, SRAM ESP 9, Rock Shox Judy. Seller says "Der Ferrari unter den MTBs." €500+ profit potential.',
+                url: 'willhaben.at'
+            },
+            {
+                brand: 'Ritchey',
+                name: 'Unknown Model',
+                year: '~1990',
+                price: 150,
+                location: 'Heuweg, AT',
+                badge: 'sleeper',
+                badgeText: '💎 Sleeper',
+                note: 'Listed as "Damenrad" (women\'s bike). If authentic Ritchey frame = €800+ value. Needs photo verification.',
+                url: 'willhaben.at'
+            }
+        ];
+        
         const inventory = {
             available: [
                 {
@@ -2529,6 +2691,34 @@
             <circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/>
             <path d="M12 17l-3-6h6l-3 6zM5 17l4-8h6M19 17l-4-8"/>
         </svg>`;
+        
+        function renderRadarCard(item) {
+            return `
+                <article class="radar-card">
+                    <div class="radar-image">
+                        ${bikeIcon}
+                        <span class="radar-badge ${item.badge}">${item.badgeText}</span>
+                    </div>
+                    <div class="radar-info">
+                        <div class="radar-brand">${item.brand}</div>
+                        <h3 class="radar-name">${item.name}</h3>
+                        <div class="radar-year">${item.year}</div>
+                        <div class="radar-meta">
+                            <span class="radar-price">€${item.price.toLocaleString()}</span>
+                            <span class="radar-location">📍 ${item.location}</span>
+                        </div>
+                        <div class="radar-note">${item.note}</div>
+                    </div>
+                </article>
+            `;
+        }
+        
+        function renderRadar() {
+            const radarGrid = document.getElementById('radar-grid');
+            if (radarGrid) {
+                radarGrid.innerHTML = radarLeads.map(lead => renderRadarCard(lead)).join('');
+            }
+        }
         
         function renderProduct(item, isSold = false) {
             return `
@@ -2716,6 +2906,7 @@
         }
         
         render();
+        renderRadar();
         initGallery();
         
         // Mobile Menu
