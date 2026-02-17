@@ -1806,6 +1806,7 @@
                     <a href="#guarantee">Guarantee</a>
                     <a href="#wanted">Wanted</a>
                     <a href="#faq">FAQ</a>
+                    <a href="#alerts">Alerts</a>
                     <a href="#toolkit">Toolkit</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -1827,6 +1828,7 @@
         <a href="#guarantee" onclick="closeMobileMenu()">Guarantee</a>
         <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
         <a href="#wanted" onclick="closeMobileMenu()">Wanted</a>
+        <a href="#alerts" onclick="closeMobileMenu()">Alerts</a>
         <a href="#toolkit" onclick="closeMobileMenu()">Toolkit</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
     </div>
@@ -2738,6 +2740,72 @@
         </div>
     </section>
 
+    <!-- Price Drop Alerts Section -->
+    <section id="alerts" class="alerts-section section" style="background: linear-gradient(135deg, #1a1714 0%, #252220 100%); color: white;">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;border-bottom:none;">
+                <h2 style="color:white;">⚡ Price Drop Alerts</h2>
+                <p style="color:var(--text-muted);max-width:600px;margin:0 auto;">Get notified instantly when grail bikes drop 20%+ in price.</p>
+            </div>
+            
+            <!-- Real Example -->
+            <div style="max-width:700px;margin:40px auto;background:rgba(255,255,255,0.05);border-radius:16px;padding:32px;border:1px solid rgba(255,255,255,0.1);">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                    <span style="background:#dc2626;color:white;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;">REAL EXAMPLE</span>
+                    <span style="color:var(--text-muted);font-size:0.85rem;">February 2026</span>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;text-align:center;">
+                    <div>
+                        <div style="font-size:2rem;font-weight:700;color:#ef4444;text-decoration:line-through;opacity:0.7;">€1,180</div>
+                        <div style="font-size:0.85rem;color:var(--text-muted);">Listed price</div>
+                    </div>
+                    <div style="font-size:2.5rem;">→</div>
+                    <div>
+                        <div style="font-size:2rem;font-weight:700;color:#22c55e;">€815</div>
+                        <div style="font-size:0.85rem;color:var(--text-muted);">After drop</div>
+                    </div>
+                </div>
+                <div style="margin-top:24px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);">
+                    <div style="font-weight:600;font-size:1.1rem;margin-bottom:8px;">Klein Pinnacle "Flare Neon" 1990</div>
+                    <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0;">GRAIL colorway. Rock Shox suspension. Rare Mavic derailleur (2-year production only). Market value: €1,200-1,500. Someone saved <span style="color:#22c55e;font-weight:600;">€400+</span> by catching the drop.</p>
+                </div>
+            </div>
+            
+            <!-- Value Props -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin:40px auto;max-width:800px;">
+                <div style="text-align:center;padding:20px;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">📉</div>
+                    <div style="font-weight:600;margin-bottom:4px;">20%+ Drops</div>
+                    <div style="font-size:0.85rem;color:var(--text-muted);">Only significant price cuts</div>
+                </div>
+                <div style="text-align:center;padding:20px;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">⚡</div>
+                    <div style="font-weight:600;margin-bottom:4px;">Instant Alerts</div>
+                    <div style="font-size:0.85rem;color:var(--text-muted);">Email within minutes</div>
+                </div>
+                <div style="text-align:center;padding:20px;">
+                    <div style="font-size:2.5rem;margin-bottom:12px;">🎯</div>
+                    <div style="font-weight:600;margin-bottom:4px;">Grails Only</div>
+                    <div style="font-size:0.85rem;color:var(--text-muted);">Klein, Yeti, Fat Chance, GT</div>
+                </div>
+            </div>
+            
+            <!-- Signup Form -->
+            <div style="max-width:500px;margin:0 auto;text-align:center;">
+                <form class="alert-signup-form" onsubmit="handleAlertSignup(event)" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+                    <input type="email" placeholder="Your email" required style="flex:1;min-width:200px;padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);color:white;font-size:1rem;">
+                    <button type="submit" class="btn" style="background:var(--rust-primary);color:white;border:none;padding:14px 28px;border-radius:8px;font-weight:600;cursor:pointer;">Get Alerts</button>
+                </form>
+                <p style="margin-top:16px;font-size:0.85rem;color:var(--text-muted);">Free weekly digest. Upgrade to instant alerts anytime.</p>
+            </div>
+            
+            <!-- Social Proof -->
+            <div style="text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);">
+                <div style="font-size:0.9rem;color:var(--text-muted);">We scan <span style="color:white;font-weight:600;">16,000+</span> listings daily across Austria & Germany</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Collector's Toolkit Section -->
     <section id="toolkit" class="toolkit-section section">
         <div class="container">
@@ -3094,6 +3162,13 @@
             };
             
             alert(`🎯 The hunt is on!\n\nI'll start looking for a ${brandNames[brand]} ${model}.\n\nYou'll get an email when I find something matching your criteria. No obligation - 10% finder's fee only if you buy.\n\nHappy hunting!`);
+            e.target.reset();
+        }
+        
+        function handleAlertSignup(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            alert(`⚡ You're on the alert list!\n\nWe'll notify you at ${email} when grail bikes drop 20%+ in price.\n\nFree weekly digest starts immediately. Watch for Klein, Yeti, Fat Chance, GT drops across Austria & Germany.`);
             e.target.reset();
         }
         
