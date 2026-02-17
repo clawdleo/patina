@@ -1027,6 +1027,209 @@
             }
         }
         
+        /* Provenance Premium Section */
+        .provenance-section {
+            background: linear-gradient(135deg, #f8f6f0 0%, #ede9df 100%);
+            padding: 100px 0;
+        }
+        
+        .provenance-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        
+        .provenance-intro .highlight-stat {
+            display: inline-block;
+            background: var(--rust);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .provenance-intro p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .provenance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .provenance-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .provenance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        
+        .provenance-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--warm-cream);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .provenance-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+        
+        .provenance-premium {
+            display: inline-block;
+            background: linear-gradient(135deg, #2d7d32, #43a047);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .provenance-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .provenance-example {
+            background: var(--charcoal);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .provenance-example-text h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+        
+        .provenance-example-text p {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .provenance-prices {
+            display: flex;
+            gap: 30px;
+            margin-top: 24px;
+        }
+        
+        .price-compare {
+            text-align: center;
+        }
+        
+        .price-compare .label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 6px;
+        }
+        
+        .price-compare .price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+        }
+        
+        .price-compare .price.standard {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .price-compare .price.premium {
+            color: var(--retro-orange);
+        }
+        
+        .provenance-checklist {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+        }
+        
+        .provenance-checklist h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 20px;
+        }
+        
+        .provenance-checklist ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .provenance-checklist li {
+            color: rgba(255,255,255,0.8);
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .provenance-checklist li:last-child {
+            border-bottom: none;
+        }
+        
+        .provenance-checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--retro-orange);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 1024px) {
+            .provenance-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .provenance-example {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .provenance-grid {
+                grid-template-columns: 1fr;
+            }
+            .provenance-example {
+                padding: 30px 24px;
+            }
+            .provenance-prices {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
         /* Story Section */
         .story-section {
             background: var(--cream);
@@ -1596,6 +1799,7 @@
                     <a href="#sold">Sold</a>
                     <a href="#radar">Radar</a>
                     <a href="#legends">Legends</a>
+                    <a href="#provenance">Provenance</a>
                     <a href="#about">Story</a>
                     <a href="#process">Process</a>
                     <a href="#investment">Invest</a>
@@ -1616,6 +1820,7 @@
         <a href="#sold" onclick="closeMobileMenu()">Sold</a>
         <a href="#radar" onclick="closeMobileMenu()">Radar</a>
         <a href="#legends" onclick="closeMobileMenu()">Legends</a>
+        <a href="#provenance" onclick="closeMobileMenu()">Provenance</a>
         <a href="#about" onclick="closeMobileMenu()">Our Story</a>
         <a href="#process" onclick="closeMobileMenu()">Process</a>
         <a href="#investment" onclick="closeMobileMenu()">Investment</a>
@@ -1886,6 +2091,91 @@
                     <h3>Brodie</h3>
                     <span class="legend-years">1986-2004</span>
                     <p>Canadian cult classic from Vancouver. Paul Brodie's Romax and Catalyst are North Shore legends. Steel frames with personality. Rare in Europe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Provenance Premium Section -->
+    <section id="provenance" class="provenance-section section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;display:block;border-bottom:none;">
+                <h2>The Provenance Premium</h2>
+                <p>Why documented history adds 25-50% to value</p>
+            </div>
+            
+            <div class="provenance-intro">
+                <span class="highlight-stat">📜 Story = Money</span>
+                <p>Two identical Klein Adroits sit side by side. Same year, same condition, same components. One sells for $2,800. The other for $4,500. The difference? A piece of paper proving it was Serial #40, raced by the Storck BikeTech team in Germany.</p>
+            </div>
+            
+            <div class="provenance-grid">
+                <div class="provenance-card">
+                    <div class="provenance-icon">🏆</div>
+                    <h3>Race Team History</h3>
+                    <span class="provenance-premium">+30-50% Premium</span>
+                    <p>Bikes ridden by sponsored athletes, team mechanics' machines, or proven race winners. Factory team bikes often had different specs than retail.</p>
+                </div>
+                <div class="provenance-card">
+                    <div class="provenance-icon">🔢</div>
+                    <h3>Low Serial Numbers</h3>
+                    <span class="provenance-premium">+20-40% Premium</span>
+                    <p>Early production bikes from a model's first year. Serial #1-100 of any legendary frame is museum-grade. Documented factory records are gold.</p>
+                </div>
+                <div class="provenance-card">
+                    <div class="provenance-icon">📸</div>
+                    <h3>Photo Documentation</h3>
+                    <span class="provenance-premium">+15-25% Premium</span>
+                    <p>Period photos showing the bike being ridden, magazine features, competition shots. Visual proof that connects the bike to its history.</p>
+                </div>
+                <div class="provenance-card">
+                    <div class="provenance-icon">📋</div>
+                    <h3>Original Receipts</h3>
+                    <span class="provenance-premium">+10-20% Premium</span>
+                    <p>Purchase receipts, warranty cards, shop invoices. Even mundane paperwork proves authenticity and establishes the bike's timeline.</p>
+                </div>
+                <div class="provenance-card">
+                    <div class="provenance-icon">🔧</div>
+                    <h3>Service Records</h3>
+                    <span class="provenance-premium">+10-15% Premium</span>
+                    <p>Documented maintenance history shows the bike was cared for. Period-correct service from known shops adds credibility.</p>
+                </div>
+                <div class="provenance-card">
+                    <div class="provenance-icon">👤</div>
+                    <h3>Notable Ownership</h3>
+                    <span class="provenance-premium">+25-100% Premium</span>
+                    <p>Celebrity, pro rider, or industry figure ownership. The ultimate provenance. Missy Giove's actual race bike? Priceless.</p>
+                </div>
+            </div>
+            
+            <div class="provenance-example">
+                <div class="provenance-example-text">
+                    <h3>Real Example: The $1,700 Difference</h3>
+                    <p>February 2026: Two 1991 Klein Adroits listed on the same forum. Both MC1 spec, both excellent condition.</p>
+                    <p>One had a handwritten note: "Serial #40. First Adroit imported to Germany. Raced by Marcus Storck for BikeTech team. Cook Bros cranks, original Syncros stem."</p>
+                    <p>That piece of paper? Worth $1,700 extra.</p>
+                    <div class="provenance-prices">
+                        <div class="price-compare">
+                            <span class="label">Without Provenance</span>
+                            <span class="price standard">$2,800</span>
+                        </div>
+                        <div class="price-compare">
+                            <span class="label">With Race History</span>
+                            <span class="price premium">$4,500</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="provenance-checklist">
+                    <h4>What Pat Ina Documents</h4>
+                    <ul>
+                        <li>Serial number verification & dating</li>
+                        <li>Frame authenticity check</li>
+                        <li>Component period-correctness</li>
+                        <li>50+ detailed photographs</li>
+                        <li>Known history from seller</li>
+                        <li>Market comparables research</li>
+                        <li>Patina Passport certificate</li>
+                    </ul>
                 </div>
             </div>
         </div>
