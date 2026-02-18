@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>Price Drop Alerts | Pat Ina - Never Miss a Grail Deal</title>
+    <meta name="description" content="Get instant alerts when Klein, Yeti, Fat Chance and other grail bikes drop in price. The last Klein Pinnacle sold in HOURS. Don't miss the next one.">
+    <meta name="keywords" content="vintage MTB alerts, Klein price drop, Yeti ARC for sale, Fat Chance deals, vintage mountain bike notification, grail bike alert">
+    <link rel="canonical" href="https://patina.onrender.com/alerts.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://patina.onrender.com/alerts.html">
+    <meta property="og:title" content="Price Drop Alerts | Never Miss a Grail Deal">
+    <meta property="og:description" content="Instant alerts when grail bikes drop in price. The last Klein sold in HOURS.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔔</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --neon-green: #39ff14;
+            --neon-pink: #ff1493;
+            --neon-blue: #00d4ff;
+            --neon-orange: #ff6b35;
+            --text: #e0e0e0;
+            --text-muted: #888;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--neon-green);
+        }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.15);
+            color: var(--neon-green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Proof Section */
+        .proof {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .proof-label {
+            color: var(--neon-orange);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .proof-stat {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--neon-orange);
+        }
+        
+        .proof-detail {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Tiers */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .tier {
+            background: var(--bg-card);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tier:hover {
+            border-color: #555;
+            transform: translateY(-4px);
+        }
+        
+        .tier.featured {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.15);
+        }
+        
+        .tier-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--neon-green);
+            color: #000;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .tier-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tier-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        
+        .tier-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tier-features {
+            list-style: none;
+        }
+        
+        .tier-features li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tier-features li::before {
+            content: "✓";
+            color: var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .tier-features li.disabled {
+            color: var(--text-muted);
+        }
+        
+        .tier-features li.disabled::before {
+            content: "✗";
+            color: #555;
+        }
+        
+        /* Form */
+        .signup-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .form-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .form-subtitle {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--bg-dark);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--neon-green);
+        }
+        
+        input::placeholder {
+            color: #666;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-dark);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: 1px solid #333;
+            transition: all 0.2s;
+        }
+        
+        .checkbox-item:hover {
+            border-color: var(--neon-green);
+        }
+        
+        .checkbox-item input {
+            width: auto;
+            accent-color: var(--neon-green);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--neon-green), #00c853);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+        }
+        
+        .form-note {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+        
+        /* Grail Grid */
+        .grails {
+            margin: 3rem 0;
+        }
+        
+        .grails h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .grail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .grail-item {
+            background: var(--bg-card);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .grail-item:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-2px);
+        }
+        
+        .grail-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .grail-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .grail-demand {
+            font-size: 0.8rem;
+            color: var(--neon-pink);
+            margin-top: 0.25rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+        
+        /* Success State */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .tier {
+                padding: 1.5rem;
+            }
+            
+            .tier-price {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="index.html">🚲 Pat <span>Ina</span></a></div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-badge">🔥 Launching Soon</div>
+            <h1>Never Miss a Grail Deal Again</h1>
+            <p class="hero-subtitle">
+                Get instant alerts when Klein, Yeti, Fat Chance and other collector bikes 
+                drop in price or hit the market. Be first. Buy smart.
+            </p>
+        </section>
+        
+        <div class="proof">
+            <div class="proof-label">Last Week's Win</div>
+            <div class="proof-stat">Sold in 3 Hours</div>
+            <div class="proof-detail">
+                Klein Pinnacle Flare Neon • Listed at €815 • 30% below market
+                <br>Our alert subscribers got 2-hour advance notice
+            </div>
+        </div>
+        
+        <section class="tiers">
+            <div class="tier">
+                <div class="tier-name">Weekly Digest</div>
+                <div class="tier-price">Free</div>
+                <div class="tier-desc">Best finds from the past week</div>
+                <ul class="tier-features">
+                    <li>Weekly email roundup</li>
+                    <li>Top 10 deals of the week</li>
+                    <li>Market trend insights</li>
+                    <li class="disabled">Instant price drop alerts</li>
+                    <li class="disabled">First dibs on new listings</li>
+                </ul>
+            </div>
+            
+            <div class="tier featured">
+                <div class="tier-badge">MOST POPULAR</div>
+                <div class="tier-name">Instant Alerts</div>
+                <div class="tier-price">€9<span>/month</span></div>
+                <div class="tier-desc">Never miss a grail again</div>
+                <ul class="tier-features">
+                    <li>Everything in Free</li>
+                    <li>Instant price drop alerts</li>
+                    <li>New listing notifications</li>
+                    <li>First dibs (2-hour head start)</li>
+                    <li>Custom brand watchlist</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="signup-form" id="signup-form">
+            <h3 class="form-title">Join the Waitlist</h3>
+            <p class="form-subtitle">Be first when we launch. Free tier available.</p>
+            
+            <form id="alert-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="rider@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tier">Interested In</label>
+                    <select id="tier" name="tier">
+                        <option value="free">Free Weekly Digest</option>
+                        <option value="premium" selected>Premium Instant Alerts (€9/mo)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Brands You're Hunting</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="klein" checked> Klein
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="yeti" checked> Yeti
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="fat-chance"> Fat Chance
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="ritchey"> Ritchey
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="gt"> GT
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="specialized"> Specialized
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="bontrager"> Bontrager
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="brands" value="other"> Other
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">🔔 Join Waitlist</button>
+                
+                <p class="form-note">No spam. Unsubscribe anytime. We only send the good stuff.</p>
+            </form>
+            
+            <div class="success-message" id="success">
+                <div class="success-icon">🎉</div>
+                <div class="success-title">You're on the list!</div>
+                <p>We'll notify you when Price Drop Alerts launches.<br>
+                Check your inbox for a welcome email.</p>
+            </div>
+        </section>
+        
+        <section class="grails">
+            <h2>🏆 Most Wanted Grails</h2>
+            <div class="grail-grid">
+                <div class="grail-item">
+                    <div class="grail-emoji">💎</div>
+                    <div class="grail-name">Klein Attitude</div>
+                    <div class="grail-demand">HIGH DEMAND</div>
+                </div>
+                <div class="grail-item">
+                    <div class="grail-emoji">🏔️</div>
+                    <div class="grail-name">Yeti ARC</div>
+                    <div class="grail-demand">VERY HIGH</div>
+                </div>
+                <div class="grail-item">
+                    <div class="grail-emoji">🍀</div>
+                    <div class="grail-name">Fat Chance Yo Eddy</div>
+                    <div class="grail-demand">RARE</div>
+                </div>
+                <div class="grail-item">
+                    <div class="grail-emoji">⚡</div>
+                    <div class="grail-name">GT Zaskar</div>
+                    <div class="grail-demand">POPULAR</div>
+                </div>
+                <div class="grail-item">
+                    <div class="grail-emoji">🔧</div>
+                    <div class="grail-name">Ritchey P-Series</div>
+                    <div class="grail-demand">COLLECTORS</div>
+                </div>
+                <div class="grail-item">
+                    <div class="grail-emoji">🌊</div>
+                    <div class="grail-name">Klein Sea & Sky</div>
+                    <div class="grail-demand">HOLY GRAIL</div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2026 <a href="index.html">Pat Ina</a> • Vintage MTB Specialists • Slovenia 🇸🇮</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="index.html">← Back to Collection</a>
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Simple form handling - stores to localStorage for now
+        // TODO: Connect to real backend/email service
+        document.getElementById('alert-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                email: document.getElementById('email').value,
+                tier: document.getElementById('tier').value,
+                brands: Array.from(document.querySelectorAll('input[name="brands"]:checked')).map(cb => cb.value),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store locally (replace with API call later)
+            const waitlist = JSON.parse(localStorage.getItem('patina-waitlist') || '[]');
+            waitlist.push(formData);
+            localStorage.setItem('patina-waitlist', JSON.stringify(waitlist));
+            
+            // Show success
+            document.getElementById('alert-form').querySelector('form').style.display = 'none';
+            document.getElementById('success').classList.add('show');
+            
+            console.log('Waitlist signup:', formData);
+        });
+    </script>
+</body>
+</html>

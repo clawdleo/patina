@@ -155,5 +155,48 @@ Analyzed eBay vintage MTB market and identified key competitors. **Main insight:
 
 ---
 
+## 🆕 Update: 2026-02-18 06:30 CET
+
+### Fresh eBay Yeti ARC Data (Last 24h)
+
+| Price | Type | Seller | Location |
+|-------|------|--------|----------|
+| **$3,407** | Premium | ajw573 (999) | UK 🇬🇧 |
+| **$2,231** | Premium | gyro-01jp (1.7K) | Japan 🇯🇵 |
+| **$1,350** | BIN | graybandedking (5.1K) | USA |
+| **$1,330** | Auction | turboschnorschel (160) | Germany 🇩🇪 |
+| $800 | Best Offer Accepted | 90smtbparts | USA |
+| $545-$550 | Mid-range | UK sellers | UK |
+
+**Key Insight:** UK/Japan premium confirmed again - $2,200-3,400 vs $800-1,350 US/EU.
+
+### New Competitors Spotted
+
+| Seller | Feedback | Location | Notes |
+|--------|----------|----------|-------|
+| **turboschnorschel** | 160 | Germany 🇩🇪 | NEW - actively bidding on $1,329 Yeti |
+| **graybandedking** | 5,100 | USA | Established, $1,350 BINs |
+| **needamill1** | 2,100 | UK | $355 auction active |
+| **ajw573** | 999 | UK | Premium $3,407 pricing |
+
+### r/xbiking Community Pulse
+- **Subscribers:** 126,601 (↑15 in 24h)
+- **Trending:** Hunter bikes, Valentine's Day customization, commuter xbike builds
+- **Insight:** Emotional connection to bikes (heart cable hangers, personalization) = content angle
+
+### Marketplace Access Issues
+- ❌ **Bolha.com (Slovenia):** Cloudflare captcha blocking scraper
+- ✅ **willhaben.at:** Operational
+- ❌ **njuskalo.hr:** Not tested this cycle
+
+### Updated Competitive Advantage
+
+**Germany is waking up.** New German sellers entering vintage MTB market (turboschnorschel). But still early days - Patina can establish position before market matures.
+
+**Action:** Get on kleinanzeigen.de (German eBay classifieds) for sourcing. German sellers = cheapest EU source.
+
+---
+
 *Analysis completed: 2026-02-18 01:30 CET*
+*Updated: 2026-02-18 06:30 CET*
 *Next review: March 2026*
