@@ -279,9 +279,181 @@
 
 ---
 
+## New Ideas (Feb 18, 2026 — 11:01 AM)
+
+### 16. "Sleeping Beauty" Alert Service 💤
+**The Insight:** Fat Chance Yo Eddy has been sitting at €1,900 for 21+ days. Long-dormant listings eventually get desperate sellers.
+
+**The Idea:**
+- Track listings across all marketplaces
+- Alert subscribers when:
+  - Price drops on watched bikes
+  - Listings hit 21-day negotiation window
+  - Stale listings reappear (reposted = motivated)
+  - Seasonal patterns (spring cleaning = inventory dumps)
+
+**Revenue:**
+- Bundled with Price Drop Alerts Premium: €9/mo
+- Standalone "Negotiation Window Alerts": €5/mo
+- Agency-style hunting: €50/find success fee
+
+**Why This Works:**
+- Timing is EVERYTHING in vintage sourcing
+- Our 21-Day Rule content proves the concept
+- No one else is tracking listing age systematically
+- Creates FOMO — "This bike just entered the window!"
+
+**MVP:** Add "Days on Market" badge to website leads section
+
+---
+
+### 17. "Local Scout Network" 🌍
+**The Insight:** Best deals require physical inspection/pickup. We can't be everywhere.
+
+**The Idea:**
+- Recruit trusted scouts in key EU cities
+- Scout verifies condition, takes photos, handles pickup
+- Fixed fee per verification/pickup
+- Build network: Vienna, Munich, Zurich, Milan
+
+**Revenue:**
+- Verification only: €30 (scout gets €20, Pat Ina €10)
+- Pickup + ship: €50-100 (scout gets €35-70)
+- Referral bonus: 5% if scout finds a lead
+
+**Why This Works:**
+- Scales sourcing beyond Alen's travel radius
+- Local knowledge = finds we'd miss online
+- Creates brand ambassadors
+- Students, bike shop employees, retirees = scout pool
+
+**Target Cities:**
+- 🇦🇹 Vienna, Salzburg, Graz
+- 🇩🇪 Munich, Stuttgart, Frankfurt
+- 🇨🇭 Zurich, Basel
+- 🇮🇹 Milan, Verona
+
+**MVP:** Post on r/xbiking or local cycling groups: "Paid vintage bike scout wanted"
+
+---
+
+### 18. "The Barn Find Rescue Service" 🏚️
+**The Insight:** Real barn finds are dirty, seized, intimidating. Collectors want them trail-ready.
+
+**The Idea:**
+- Full "rescue" service for neglected vintage bikes
+- NOT restoration (preserve patina!)
+- Just: clean, free up seized parts, fresh cables/tires, safety check
+- Document the rescue process (content gold!)
+
+**Revenue:**
+- Basic rescue: €150 (clean, lube, safety check)
+- Full rescue: €300 (+ new cables, tires, tubes, consumables)
+- Premium rescue: €500 (+ period-correct parts sourcing)
+- Content license: Free if we can document and share the process
+
+**Why This Works:**
+- Differentiator from "cleaned up" resellers
+- Creates amazing before/after content
+- Increases resale value significantly
+- Builds emotional connection to brand
+
+**MVP:** Rescue one bike, document process for Instagram/Twitter, track engagement
+
+---
+
+### 19. "Component Swap Network" 🔄
+**The Insight:** Collectors often have wrong-era parts and need to swap. No good marketplace for this.
+
+**The Idea:**
+- Matchmaking for component swaps
+- "I have XTR M950, need XTR M900"
+- Platform facilitates trade, verifies condition
+- Commission on successful swaps
+
+**Revenue:**
+- Listing fee: Free (build inventory)
+- Successful swap: 10% commission from each party (20% total)
+- Featured listing: €5/week
+- Authenticity verification add-on: €15
+
+**Why This Works:**
+- Solves real pain point (wrong era parts)
+- Creates community
+- Builds database of who has what
+- Cross-sell to other services
+
+**MVP:** Create Google Form / Notion database, post on r/xbiking, match first 10 swaps manually
+
+---
+
+### 20. "The Build Sheet Archive" 📚
+**The Insight:** Original spec sheets and catalogs are scattered across the internet. No single authoritative source.
+
+**The Idea:**
+- Comprehensive database of vintage MTB specs
+- Year-by-year builds: Klein, Yeti, Fat Chance, Specialized, etc.
+- Original catalog scans, color charts, geometry tables
+- Searchable by year, brand, model, component
+
+**Revenue:**
+- Basic access: Free (builds SEO + authority)
+- Premium: €5/mo (high-res scans, full catalogs)
+- Dealer API: €100/mo (integrate into their listings)
+- "What's My Bike?" lookup service: €10 per query
+
+**Why This Works:**
+- Evergreen reference content = SEO machine
+- No competitor has this comprehensively
+- Supports authentication service
+- Creates "moat" — hard to replicate
+- Collectors NEED this for accurate builds
+
+**MVP:** Start with Klein 1989-1995 catalog scans (most requested)
+
+---
+
+## Idea Validation Status (Updated)
+
+| Idea | Status | Evidence |
+|------|--------|----------|
+| Price Drop Alerts | ✅ VALIDATED | Klein sold in hours |
+| EU→US Arbitrage | 🟡 TESTING | Need US customer data |
+| Authentication | 🟡 TESTING | 3 inquiries via form |
+| Estate Alert Network | 🟡 HIGH PRIORITY | Neumarkt liquidation validates |
+| UK/Japan Export | 🟡 HIGH PRIORITY | Market data confirms premium |
+| Local Scout Network | 🟡 HIGH POTENTIAL | Scales sourcing |
+| Build Sheet Archive | 🟡 HIGH POTENTIAL | SEO moat |
+| Sleeping Beauty Alerts | 🔴 NEW | Extension of validated model |
+| Barn Find Rescue | 🔴 NEW | Content + revenue combo |
+| Component Swap | 🔴 NEW | Community builder |
+| Grail Colorway Registry | 🔴 NEW | Needs market research |
+| First Ride Certificate | 🔴 NEW | Concept only |
+| Decal Kit | 🔴 NEW | Easy MVP |
+| Investment Club | 🔴 NEW | Legal research needed |
+| Vintage vs Modern Verify | 🔴 NEW | Scraper false positive shows need |
+| Patina Passport | 🔴 NEW | Combines multiple services |
+| Component Dating | 🔴 NEW | Low effort, scalable |
+
+---
+
+## Revenue Potential Ranking (Feb 2026 — Updated)
+
+1. **Estate Alert Network** — Highest margin potential (50-100%)
+2. **UK/Japan Export** — Premium markets, proven demand
+3. **Price Drop Alerts + Sleeping Beauty** — Validated, combo offering
+4. **Build Sheet Archive** — Long-term SEO moat
+5. **Local Scout Network** — Scales sourcing beyond travel radius
+6. **Patina Passport** — Premium service, builds brand
+7. **Barn Find Rescue** — Service + content hybrid
+8. **Component Dating** — Low effort, scalable
+
+---
+
 ## Next Actions
-1. Price Drop Alert Service → Build landing page
+1. Price Drop Alert Service → DONE ✅ (landing page live)
 2. Estate Alert Network → Create "We Buy Vintage Bikes" one-pager for estate companies
 3. UK/Japan Export → Test listing one bike on eBay UK
-4. EU→US Arbitrage → Find US vintage MTB communities
-5. Decal Kit → Research suppliers, pricing
+4. Local Scout Network → Post in r/xbiking for first scouts
+5. Build Sheet Archive → Start with Klein 1989-1995 catalogs
+6. Sleeping Beauty Alerts → Add "Days on Market" badge to website
