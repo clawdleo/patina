@@ -197,6 +197,77 @@ Analyzed eBay vintage MTB market and identified key competitors. **Main insight:
 
 ---
 
+## 🆕 Update: 2026-02-18 11:30 CET
+
+### Fresh Klein eBay Sold Data Analysis
+
+**71 recently sold listings analyzed:**
+
+| Tier | Price | Seller | Location | Notes |
+|------|-------|--------|----------|-------|
+| **ULTRA-PREMIUM** | $3,333 | unbroken_chain_cycles (22.2K) | USA | Highest price point |
+| **Premium** | $1,499 | uncle_yanskys_garage (1.4K) | USA | Complete bike |
+| **Premium** | $1,299 | art-bikes (6.2K) | Italy 🇮🇹 | EU premium seller |
+| **Strong** | $1,051 | 944lux (1K) | UK 🇬🇧 | UK premium |
+| **Strong** | $1,017 | needamill1 (2.1K) | UK 🇬🇧 | Active UK dealer |
+| **Mid** | $800 | 90smtb (1.1K) | USA | Frame-only |
+| **Mid** | $799 | 90smtbparts (420) | USA | Best offer accepted |
+| **Entry** | $476 | karl_vom_kanal (33.4K) | Germany 🇩🇪 | **MEGA seller** |
+| **Entry** | $474 | jfbikeparts (13.4K) | Germany 🇩🇪 | High volume |
+| **Entry** | $409 | mtr0089 (31.2K) | USA | Massive seller |
+| **Budget** | $300 | 90smtbparts (420) | USA | Parts/projects |
+
+### 🔥 NEW Major Competitors Identified
+
+| Seller | Feedback | Location | Market Position |
+|--------|----------|----------|-----------------|
+| **karl_vom_kanal** | **33,400+** | Germany 🇩🇪 | MEGA-SELLER - German eBay king |
+| **unbroken_chain_cycles** | **22,200+** | USA | Ultra-premium positioning $3,333+ |
+| **mtr0089** | **31,200+** | USA | High volume general |
+| **jfbikeparts** | **13,400+** | Germany 🇩🇪 | German parts specialist |
+| **art-bikes** | **6,200+** | Italy 🇮🇹 | Premium EU positioning |
+| **mr_birdbird** | **5,400+** | UK 🇬🇧 | UK market |
+| **graybandedking** | **5,100+** | USA | Established dealer |
+
+### Price Tier Analysis (Klein)
+
+| Tier | Price Range | Who Sells Here |
+|------|-------------|----------------|
+| Ultra-Premium | $3,000+ | unbroken_chain_cycles |
+| Premium | $1,000-1,500 | art-bikes, needamill1, uncle_yanskys |
+| Strong | $600-999 | 90smtb, 90smtbparts |
+| Entry | $400-600 | German sellers (karl_vom_kanal, jfbikeparts) |
+| Parts/Budget | $100-400 | Everyone |
+
+### 🔑 Strategic Insights
+
+1. **Germany = Best EU Sourcing**
+   - karl_vom_kanal (33K) and jfbikeparts (13K) are HUGE
+   - Entry prices $474-$476 vs US $800+
+   - **Action:** Prioritize kleinanzeigen.de for buying
+
+2. **Italian Sellers = Premium Position**
+   - art-bikes at $1,299 confirms premium pricing works from EU
+   - servizio_corse also active
+   - **Validates:** Patina premium positioning
+
+3. **UK Premium Confirmed**
+   - 944lux, needamill1 both at $1,000+
+   - UK collectors pay premium
+   - **Action:** Target UK buyers for grails
+
+4. **Competition Heating Up**
+   - More German sellers entering market
+   - Feedback scores growing (33K, 22K sellers)
+   - **Move Fast:** Establish Patina position before saturation
+
+### willhaben.at Scraper Status ✅
+- Total: 168 | Steals: 23 | Hot: 19 | Vintage: 12
+- **Fat Chance Yo Eddy:** ACTIVE at €1,900 (21+ days - NEGOTIATION WINDOW)
+- **Klein Attitude Team:** ACTIVE at €1,250
+
+---
+
 *Analysis completed: 2026-02-18 01:30 CET*
-*Updated: 2026-02-18 06:30 CET*
+*Updated: 2026-02-18 11:30 CET*
 *Next review: March 2026*
