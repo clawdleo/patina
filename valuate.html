@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Bike Valuation — Pat Ina</title>
+<meta name="description" content="Find out what your vintage mountain bike is really worth. Free, honest, market-based valuation from Pat Ina — Europe's vintage MTB specialists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f5f2;
+  --bg-dark: #1a1714;
+  --bg-card: #fffefa;
+  --text: #1a1714;
+  --text-light: #5c564d;
+  --text-muted: #8a847a;
+  --rust: #8b4a2b;
+  --rust-light: #c4704a;
+  --warm-cream: #f5f0e6;
+  --copper-green: #4a6b5d;
+  --weathered: #a69580;
+  --aged-bronze: #7a6147;
+  --border: #e8e2d9;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);background:var(--bg-card);}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--rust);text-decoration:none;letter-spacing:-0.5px;}
+.nav-back{font-size:13px;color:var(--text-light);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .15s;}
+.nav-back:hover{color:var(--rust);}
+
+/* LAYOUT */
+.page-wrap{max-width:680px;margin:0 auto;padding:40px 20px 80px;}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:40px;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--warm-cream);border:1px solid var(--weathered);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;color:var(--aged-bronze);margin-bottom:16px;letter-spacing:.3px;}
+.hero h1{font-family:'DM Serif Display',serif;font-size:36px;line-height:1.2;color:var(--text);margin-bottom:12px;}
+.hero h1 em{font-style:italic;color:var(--rust);}
+.hero p{font-size:15px;color:var(--text-light);line-height:1.65;max-width:520px;margin:0 auto;}
+
+/* PROGRESS */
+.progress-wrap{margin-bottom:32px;}
+.progress-steps{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.prog-step{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--text-muted);}
+.prog-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--text-muted);background:var(--bg-card);transition:all .3s;}
+.prog-dot.done{border-color:var(--copper-green);background:var(--copper-green);color:#fff;}
+.prog-dot.active{border-color:var(--rust);background:var(--rust);color:#fff;}
+.prog-line{flex:1;height:2px;background:var(--border);margin:0 4px;margin-bottom:18px;transition:background .3s;}
+.prog-line.done{background:var(--copper-green);}
+.progress-bar-track{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--rust),var(--rust-light));border-radius:2px;transition:width .4s ease;}
+
+/* CARDS */
+.wizard-card{background:var(--bg-card);border:1.5px solid var(--border);border-radius:16px;padding:28px;margin-bottom:16px;}
+.step-title{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:6px;}
+.step-sub{font-size:13px;color:var(--text-muted);margin-bottom:20px;}
+
+/* BRAND GRID */
+.brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+@media(min-width:480px){.brand-grid{grid-template-columns:repeat(4,1fr);}}
+.brand-btn{padding:10px 6px;border:2px solid var(--border);border-radius:10px;background:var(--bg-card);cursor:pointer;text-align:center;transition:all .15s;font-size:12px;font-weight:600;color:var(--text-light);line-height:1.3;}
+.brand-btn:hover{border-color:var(--weathered);color:var(--text);}
+.brand-btn.selected{border-color:var(--rust);background:var(--warm-cream);color:var(--rust);}
+.brand-btn .brand-icon{font-size:18px;display:block;margin-bottom:3px;}
+
+/* YEAR SELECTOR */
+.year-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+@media(min-width:480px){.year-grid{grid-template-columns:repeat(3,1fr);}}
+.year-btn{padding:12px 8px;border:2px solid var(--border);border-radius:10px;background:var(--bg-card);cursor:pointer;text-align:center;transition:all .15s;}
+.year-btn:hover{border-color:var(--weathered);}
+.year-btn.selected{border-color:var(--rust);background:var(--warm-cream);}
+.year-btn .year-label{font-size:14px;font-weight:700;color:var(--text);display:block;}
+.year-btn .year-tier{font-size:10px;color:var(--text-muted);display:block;margin-top:2px;}
+.year-btn.selected .year-tier{color:var(--rust);}
+
+/* CONDITION */
+.condition-list{display:flex;flex-direction:column;gap:8px;}
+.cond-btn{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:2px solid var(--border);border-radius:10px;background:var(--bg-card);cursor:pointer;text-align:left;transition:all .15s;width:100%;}
+.cond-btn:hover{border-color:var(--weathered);}
+.cond-btn.selected{border-color:var(--rust);background:var(--warm-cream);}
+.cond-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+.cond-name{font-size:14px;font-weight:700;display:block;color:var(--text);}
+.cond-desc{font-size:12px;color:var(--text-muted);display:block;margin-top:2px;line-height:1.4;}
+
+/* ORIGIN QUESTIONS */
+.origin-question{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);}
+.origin-question:last-child{border-bottom:none;}
+.origin-q-text{font-size:14px;font-weight:600;flex:1;padding-right:12px;}
+.origin-q-sub{font-size:12px;color:var(--text-muted);font-weight:400;display:block;margin-top:2px;}
+.toggle-wrap{display:flex;gap:6px;}
+.toggle-btn{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);font-size:12px;font-weight:600;cursor:pointer;background:var(--bg-card);color:var(--text-light);transition:all .15s;}
+.toggle-btn:hover{border-color:var(--weathered);}
+.toggle-btn.yes.active{border-color:var(--copper-green);background:var(--copper-green);color:#fff;}
+.toggle-btn.no.active{border-color:var(--weathered);background:var(--weathered);color:#fff;}
+
+/* RESULT */
+.result-hero{text-align:center;padding:24px 0 20px;}
+.result-tier-badge{display:inline-block;padding:6px 18px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px;margin-bottom:16px;}
+.tier-trophy{background:#7a6147;color:#fff;}
+.tier-premium{background:#4a6b5d;color:#fff;}
+.tier-mid{background:#a69580;color:#fff;}
+.result-value{font-family:'DM Serif Display',serif;font-size:52px;color:var(--rust);line-height:1;margin-bottom:6px;}
+.result-range{font-size:14px;color:var(--text-muted);}
+.result-divider{border:none;border-top:1px solid var(--border);margin:20px 0;}
+.result-factors{display:flex;flex-direction:column;gap:8px;}
+.factor-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;}
+.factor-label{color:var(--text-light);}
+.factor-val{font-weight:700;}
+.factor-val.boost{color:var(--copper-green);}
+.factor-val.neutral{color:var(--text-muted);}
+.result-insight{background:var(--warm-cream);border:1px solid var(--weathered);border-radius:10px;padding:14px 16px;margin-top:20px;font-size:13px;line-height:1.6;color:var(--text-light);}
+.result-insight strong{color:var(--text);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:all .15s;border:none;text-decoration:none;}
+.btn-primary{background:var(--rust);color:#fff;}
+.btn-primary:hover{background:var(--rust-light);}
+.btn-outline{background:transparent;color:var(--rust);border:1.5px solid var(--rust);}
+.btn-outline:hover{background:var(--warm-cream);}
+.btn-ghost{background:transparent;color:var(--text-light);border:1.5px solid var(--border);}
+.btn-ghost:hover{border-color:var(--weathered);color:var(--text);}
+.btn-full{width:100%;}
+.btn-row{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;}
+
+/* CTA CARDS */
+.cta-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px;}
+@media(min-width:500px){.cta-grid{grid-template-columns:1fr 1fr;}}
+.cta-card{border:1.5px solid var(--border);border-radius:12px;padding:18px;transition:all .15s;cursor:pointer;text-decoration:none;display:block;}
+.cta-card:hover{border-color:var(--rust);box-shadow:0 2px 12px rgba(139,74,43,.1);}
+.cta-card-icon{font-size:24px;margin-bottom:8px;display:block;}
+.cta-card-title{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--text);}
+.cta-card-desc{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+/* TRUST STRIP */
+.trust-strip{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
+.trust-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-muted);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-dark);color:var(--warm-cream);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;z-index:999;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* HIDDEN */
+.step{display:none;}.step.active{display:block;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Pat Ina
+  </a>
+  <a href="/" class="nav-logo">Pat Ina</a>
+  <div style="width:80px;"></div>
+</nav>
+
+<div class="page-wrap">
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Free · No registration · 60 seconds
+    </div>
+    <h1>What is your bike <em>actually</em> worth?</h1>
+    <p>Answer 4 quick questions. Get a real market-based value range — the same data used by serious collectors in EU, UK, and Japan.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-steps">
+      <div class="prog-step"><div class="prog-dot active" id="pd1">1</div><span>Brand</span></div>
+      <div class="prog-line" id="pl1"></div>
+      <div class="prog-step"><div class="prog-dot" id="pd2">2</div><span>Year</span></div>
+      <div class="prog-line" id="pl2"></div>
+      <div class="prog-step"><div class="prog-dot" id="pd3">3</div><span>Condition</span></div>
+      <div class="prog-line" id="pl3"></div>
+      <div class="prog-step"><div class="prog-dot" id="pd4">4</div><span>Origin</span></div>
+      <div class="prog-line" id="pl4"></div>
+      <div class="prog-step"><div class="prog-dot" id="pd5">★</div><span>Value</span></div>
+    </div>
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBar" style="width:20%"></div></div>
+  </div>
+
+  <!-- STEP 1: BRAND -->
+  <div class="step active" id="step-1">
+    <div class="wizard-card">
+      <div class="step-title">What's the brand?</div>
+      <div class="step-sub">Brand is the biggest driver of value. If yours isn't listed, choose the closest match.</div>
+      <div class="brand-grid" id="brandGrid">
+        <button class="brand-btn" onclick="selectBrand('yeti',2.5,this)"><span class="brand-icon">🏔️</span>Yeti</button>
+        <button class="brand-btn" onclick="selectBrand('fat_chance',2.2,this)"><span class="brand-icon">🦛</span>Fat Chance</button>
+        <button class="brand-btn" onclick="selectBrand('klein',2.0,this)"><span class="brand-icon">⚡</span>Klein</button>
+        <button class="brand-btn" onclick="selectBrand('breezer',2.8,this)"><span class="brand-icon">🌊</span>Breezer</button>
+        <button class="brand-btn" onclick="selectBrand('fisher',1.8,this)"><span class="brand-icon">🔵</span>Fisher</button>
+        <button class="brand-btn" onclick="selectBrand('ritchey',1.6,this)"><span class="brand-icon">🔩</span>Ritchey</button>
+        <button class="brand-btn" onclick="selectBrand('alan',2.5,this)"><span class="brand-icon">🏎️</span>ALAN</button>
+        <button class="brand-btn" onclick="selectBrand('specialized',1.3,this)"><span class="brand-icon">🔴</span>Specialized</button>
+        <button class="brand-btn" onclick="selectBrand('cannondale',1.2,this)"><span class="brand-icon">⚫</span>Cannondale</button>
+        <button class="brand-btn" onclick="selectBrand('gt',1.1,this)"><span class="brand-icon">🟢</span>GT</button>
+        <button class="brand-btn" onclick="selectBrand('trek',1.0,this)"><span class="brand-icon">⭐</span>Trek</button>
+        <button class="brand-btn" onclick="selectBrand('japanese',1.5,this)"><span class="brand-icon">🇯🇵</span>Japanese</button>
+        <button class="brand-btn" onclick="selectBrand('american_other',1.15,this)"><span class="brand-icon">🇺🇸</span>Other US</button>
+        <button class="brand-btn" onclick="selectBrand('european',1.0,this)"><span class="brand-icon">🇪🇺</span>Other EU</button>
+        <button class="brand-btn" onclick="selectBrand('unknown',0.9,this)"><span class="brand-icon">❓</span>Not sure</button>
+      </div>
+    </div>
+    <div class="btn-row" style="justify-content:flex-end">
+      <button class="btn btn-primary" onclick="goStep(2)" id="btn-next-1" disabled style="opacity:.4">Next →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: YEAR -->
+  <div class="step" id="step-2">
+    <div class="wizard-card">
+      <div class="step-title">When was it made?</div>
+      <div class="step-sub">Older is generally rarer. Pre-1985 bikes have Trophy potential — the holy grail tier.</div>
+      <div class="year-grid">
+        <button class="year-btn" onclick="selectYear('pre1985',2.8,this)"><span class="year-label">Pre-1985</span><span class="year-tier">🏆 Trophy tier</span></button>
+        <button class="year-btn" onclick="selectYear('1985-1990',1.8,this)"><span class="year-label">1985 – 1990</span><span class="year-tier">📈 High demand</span></button>
+        <button class="year-btn" onclick="selectYear('1991-1995',1.3,this)"><span class="year-label">1991 – 1995</span><span class="year-tier">✓ Collector era</span></button>
+        <button class="year-btn" onclick="selectYear('1996-2000',1.0,this)"><span class="year-label">1996 – 2000</span><span class="year-tier">Standard</span></button>
+        <button class="year-btn" onclick="selectYear('2001-2005',0.65,this)"><span class="year-label">2001 – 2005</span><span class="year-tier">Lower value</span></button>
+        <button class="year-btn" onclick="selectYear('unknown_year',1.0,this)"><span class="year-label">Not sure</span><span class="year-tier">We'll estimate</span></button>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goStep(1)">← Back</button>
+      <button class="btn btn-primary" onclick="goStep(3)" id="btn-next-2" disabled style="opacity:.4">Next →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: CONDITION -->
+  <div class="step" id="step-3">
+    <div class="wizard-card">
+      <div class="step-title">What's the condition?</div>
+      <div class="step-sub">Be honest — collectors can tell. Pick the worst that applies.</div>
+      <div class="condition-list">
+        <button class="cond-btn" onclick="selectCondition('museum',2.0,this)"><span class="cond-icon">🏛️</span><span><span class="cond-name">Museum</span><span class="cond-desc">NOS or near-NOS. No use, perfect original parts, possibly still in box. Extremely rare.</span></span></button>
+        <button class="cond-btn" onclick="selectCondition('excellent',1.5,this)"><span class="cond-icon">⭐</span><span><span class="cond-name">Excellent</span><span class="cond-desc">Lightly used. All original, minor cosmetic wear only. Paint largely intact.</span></span></button>
+        <button class="cond-btn" onclick="selectCondition('very_good',1.2,this)"><span class="cond-icon">✅</span><span><span class="cond-name">Very Good</span><span class="cond-desc">Ridden but well cared for. Some paint chips, original parts mostly present.</span></span></button>
+        <button class="cond-btn" onclick="selectCondition('good',0.85,this)"><span class="cond-icon">👍</span><span><span class="cond-name">Good</span><span class="cond-desc">Visible wear, may have some replacement parts. Still functional and presentable.</span></span></button>
+        <button class="cond-btn" onclick="selectCondition('fair',0.5,this)"><span class="cond-icon">⚠️</span><span><span class="cond-name">Fair</span><span class="cond-desc">Heavy use, scratches, rust patches, missing parts. Needs work.</span></span></button>
+        <button class="cond-btn" onclick="selectCondition('project',0.2,this)"><span class="cond-icon">🔧</span><span><span class="cond-name">Project Bike</span><span class="cond-desc">Parts missing, structural issues, incomplete. Valuable as parts or for restoration.</span></span></button>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goStep(2)">← Back</button>
+      <button class="btn btn-primary" onclick="goStep(4)" id="btn-next-3" disabled style="opacity:.4">Next →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: ORIGIN -->
+  <div class="step" id="step-4">
+    <div class="wizard-card">
+      <div class="step-title">Tell us about the bike's history</div>
+      <div class="step-sub">These details can double the value. Original means everything in this market.</div>
+
+      <div class="origin-question">
+        <div class="origin-q-text">Original paint?
+          <span class="origin-q-sub">Factory paint, untouched. No respray, no touch-ups.</span>
+        </div>
+        <div class="toggle-wrap">
+          <button class="toggle-btn yes" id="orig-paint-yes" onclick="setOrigin('paint',true,this)">Yes</button>
+          <button class="toggle-btn no active" id="orig-paint-no" onclick="setOrigin('paint',false,this)">No</button>
+        </div>
+      </div>
+
+      <div class="origin-question">
+        <div class="origin-q-text">First owner?
+          <span class="origin-q-sub">You bought it new, or have full provenance documentation.</span>
+        </div>
+        <div class="toggle-wrap">
+          <button class="toggle-btn yes" id="orig-owner-yes" onclick="setOrigin('owner',true,this)">Yes</button>
+          <button class="toggle-btn no active" id="orig-owner-no" onclick="setOrigin('owner',false,this)">No</button>
+        </div>
+      </div>
+
+      <div class="origin-question">
+        <div class="origin-q-text">All-original components?
+          <span class="origin-q-sub">Original groupset, wheels, saddle — no upgrades or swaps.</span>
+        </div>
+        <div class="toggle-wrap">
+          <button class="toggle-btn yes" id="orig-comp-yes" onclick="setOrigin('components',true,this)">Yes</button>
+          <button class="toggle-btn no active" id="orig-comp-no" onclick="setOrigin('components',false,this)">No</button>
+        </div>
+      </div>
+
+      <div class="origin-question">
+        <div class="origin-q-text">Stored indoors (attic/cellar)?
+          <span class="origin-q-sub">"Keller find" is a collector signal. Protected storage = better preservation.</span>
+        </div>
+        <div class="toggle-wrap">
+          <button class="toggle-btn yes" id="orig-storage-yes" onclick="setOrigin('storage',true,this)">Yes</button>
+          <button class="toggle-btn no active" id="orig-storage-no" onclick="setOrigin('storage',false,this)">No</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-ghost" onclick="goStep(3)">← Back</button>
+      <button class="btn btn-primary btn-full" onclick="calculate()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Calculate my bike's value
+      </button>
+    </div>
+  </div>
+
+  <!-- STEP 5: RESULT -->
+  <div class="step" id="step-5">
+    <div class="wizard-card">
+      <div class="result-hero">
+        <div class="result-tier-badge" id="tierBadge">TROPHY TIER</div>
+        <div class="result-value" id="resultValue">€0</div>
+        <div class="result-range" id="resultRange">estimated value range</div>
+      </div>
+
+      <hr class="result-divider">
+
+      <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;">Value breakdown</div>
+      <div class="result-factors" id="factorsList"></div>
+
+      <div class="result-insight" id="resultInsight"></div>
+    </div>
+
+    <div class="wizard-card" style="margin-top:0;">
+      <div style="font-size:16px;font-weight:700;margin-bottom:4px;">What would you like to do?</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Pat Ina specialises in exactly these bikes. No obligation, no fees just to talk.</div>
+      <div class="cta-grid">
+        <a href="/#contact" class="cta-card">
+          <span class="cta-card-icon">📸</span>
+          <div class="cta-card-title">Get exact valuation</div>
+          <div class="cta-card-desc">Send photos. Get a precise offer within 24 hours. Free, honest, no pressure.</div>
+        </a>
+        <a href="/#consign" class="cta-card">
+          <span class="cta-card-icon">🤝</span>
+          <div class="cta-card-title">Consign with Pat Ina</div>
+          <div class="cta-card-desc">We find the buyer, handle shipping & paperwork. You get 75-80% of sale price.</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <div class="trust-item">🔒 Anonymous — no email required</div>
+      <div class="trust-item">🌍 EU, UK & JP market data</div>
+      <div class="trust-item">📊 Updated monthly</div>
+    </div>
+
+    <div style="text-align:center;margin-top:20px;">
+      <button class="btn btn-ghost" onclick="reset()">Start over with another bike</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// State
+const state = {
+  brand: null, brandMult: 1, brandLabel: '',
+  year: null, yearMult: 1, yearLabel: '',
+  condition: null, condMult: 1, condLabel: '',
+  paint: false, owner: false, components: false, storage: false,
+  currentStep: 1
+};
+
+// Base values by year (low, mid, high in EUR)
+const yearBases = {
+  'pre1985':    {low:2500, mid:5000, high:10000},
+  '1985-1990':  {low:800,  mid:1600, high:3500},
+  '1991-1995':  {low:400,  mid:900,  high:2000},
+  '1996-2000':  {low:200,  mid:500,  high:1200},
+  '2001-2005':  {low:120,  mid:300,  high:700},
+  'unknown_year':{low:400, mid:900,  high:2000}
+};
+
+const tierInfo = {
+  'pre1985':   {label:'🏆 TROPHY TIER', class:'tier-trophy', tip:'Pre-1985 bikes are museum pieces. Documented provenance and original condition push these into serious collector territory.'},
+  '1985-1990': {label:'💎 PREMIUM TIER', class:'tier-premium', tip:'1985-1990 is the sweet spot — iconic geometry, legendary brands at peak form. These bikes are appreciating fast.'},
+  '1991-1995': {label:'💎 PREMIUM TIER', class:'tier-premium', tip:'1991-1995 bikes represent the technical peak of steel MTBs before suspension took over. Strong collector demand.'},
+  '1996-2000': {label:'🟤 MID-RANGE', class:'tier-mid', tip:'1996-2000 bikes can still carry collector value, especially with original paint and rare brands.'},
+  '2001-2005': {label:'🟤 MID-RANGE', class:'tier-mid', tip:'2001-2005 bikes are only just entering collector interest. Rare brands or NOS condition make these interesting.'},
+  'unknown_year':{label:'💎 ESTIMATED TIER', class:'tier-premium', tip:'Without a confirmed year, we use collector-era values as reference.'}
+};
+
+const brandInsights = {
+  yeti: 'Yeti ARC and early Yeti frames are among the most sought-after names in vintage MTB. UK/Japan prices run 30-40% above EU.',
+  fat_chance: 'Fat Chance "Yo Eddy!" is a holy grail. Any original Fat Chance with provenance attracts serious offers.',
+  klein: 'Klein\'s anodised paint in original condition is irreplaceable. Klein Attitude and Adroit are the top targets.',
+  breezer: 'Joe Breeze built the first true MTBs. Very early Breezers (Series I-III) are historically significant — museum territory.',
+  fisher: 'Gary Fisher Procaliber and early RS-1 frames command solid premiums. Pioneer cachet is real.',
+  ritchey: 'Ritchey is quietly appreciating — up ~35% in 2025 but still undervalued vs Yeti/Klein. Smart buy for collectors.',
+  alan: 'ALAN Carbonio MTBs are exceptionally rare. Italian aluminium at this level can reach €2,000-5,000 in original condition.',
+  specialized: 'Stumpjumper 1981 is the landmark. Original Stumpy or Rockhopper in good condition still attracts strong bids.',
+  default: 'Original condition, documented provenance, and first-owner history are the biggest value drivers in this market.'
+};
+
+// Step navigation
+function goStep(n){
+  document.getElementById('step-'+state.currentStep).classList.remove('active');
+  document.getElementById('step-'+n).classList.add('active');
+  state.currentStep=n;
+  updateProgress(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateProgress(n){
+  const pct=[20,40,60,80,100][n-1];
+  document.getElementById('progressBar').style.width=pct+'%';
+  for(let i=1;i<=5;i++){
+    const dot=document.getElementById('pd'+i);
+    const line=document.getElementById('pl'+i);
+    if(i<n){dot.classList.add('done');dot.classList.remove('active');if(line)line.classList.add('done');}
+    else if(i===n){dot.classList.add('active');dot.classList.remove('done');}
+    else{dot.classList.remove('done','active');}
+  }
+}
+
+// Selections
+function selectBrand(key, mult, el){
+  document.querySelectorAll('.brand-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  state.brand=key; state.brandMult=mult; state.brandLabel=el.textContent.trim();
+  const btn=document.getElementById('btn-next-1');
+  btn.disabled=false; btn.style.opacity='1';
+}
+
+function selectYear(key, mult, el){
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  state.year=key; state.yearMult=mult; state.yearLabel=el.querySelector('.year-label').textContent.trim();
+  const btn=document.getElementById('btn-next-2');
+  btn.disabled=false; btn.style.opacity='1';
+}
+
+function selectCondition(key, mult, el){
+  document.querySelectorAll('.cond-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  state.condition=key; state.condMult=mult; state.condLabel=el.querySelector('.cond-name').textContent.trim();
+  const btn=document.getElementById('btn-next-3');
+  btn.disabled=false; btn.style.opacity='1';
+}
+
+function setOrigin(field, val, btn){
+  state[field]=val;
+  const wrapper=btn.closest('.toggle-wrap');
+  wrapper.querySelectorAll('.toggle-btn').forEach(b=>{b.classList.remove('active');});
+  btn.classList.add('active');
+}
+
+// Format EUR
+function fmtEur(v){
+  if(v>=1000) return '€'+Math.round(v/100)*100/1000+'k';
+  return '€'+Math.round(v/10)*10;
+}
+function fmtEurFull(v){return '€'+v.toLocaleString('de-DE');}
+
+// Calculate
+function calculate(){
+  const base=yearBases[state.year]||yearBases['unknown_year'];
+  const bm=state.brandMult;
+  const cm=state.condMult;
+  
+  let paintBonus=state.paint?1.5:1.0;
+  let ownerBonus=state.owner?1.35:1.0;
+  let compBonus=state.components?1.15:1.0;
+  let storageBonus=state.storage?1.1:1.0;
+
+  const totalMult=bm*cm*paintBonus*ownerBonus*compBonus*storageBonus;
+  
+  let low=Math.round(base.low*totalMult);
+  let mid=Math.round(base.mid*totalMult);
+  let high=Math.round(base.high*totalMult);
+
+  // Snap to clean numbers
+  low=Math.round(low/50)*50;
+  mid=Math.round(mid/50)*50;
+  high=Math.round(high/50)*50;
+
+  // Render result
+  const tier=tierInfo[state.year]||tierInfo['unknown_year'];
+  document.getElementById('tierBadge').textContent=tier.label;
+  document.getElementById('tierBadge').className='result-tier-badge '+tier.class;
+  document.getElementById('resultValue').textContent=fmtEurFull(mid);
+  document.getElementById('resultRange').textContent=`Estimated range: ${fmtEurFull(low)} – ${fmtEurFull(high)}`;
+  
+  const factors=[
+    {l:'Brand: '+state.brandLabel, v: bm>=2.0?'Premium brand (+'+Math.round((bm-1)*100)+'%)': bm>=1.3?'+'+Math.round((bm-1)*100)+'%':'Standard',boost:bm>=1.5},
+    {l:'Era: '+state.yearLabel, v: state.yearMult>=2?'Collector era':''+state.condLabel,boost:state.yearMult>=1.5},
+    {l:'Condition: '+state.condLabel, v: cm>=1.5?'Exceptional':cm>=1.0?'Good':cm<0.5?'Significant discount':'Average', boost:cm>=1.2},
+    state.paint?{l:'Original paint', v:'+50% premium',boost:true}:null,
+    state.owner?{l:'First owner / provenance', v:'+35% premium',boost:true}:null,
+    state.components?{l:'All-original components', v:'+15%',boost:true}:null,
+    state.storage?{l:'Protected indoor storage', v:'+10%',boost:true}:null,
+  ].filter(Boolean);
+
+  document.getElementById('factorsList').innerHTML=factors.map(f=>`
+    <div class="factor-row">
+      <span class="factor-label">${f.l}</span>
+      <span class="factor-val ${f.boost?'boost':'neutral'}">${f.v}</span>
+    </div>`).join('');
+
+  const insight=brandInsights[state.brand]||brandInsights.default;
+  const marketNote=mid>3000?` At this value, Japanese and UK buyers often pay 20-30% above EU asking prices.`:'';
+  document.getElementById('resultInsight').innerHTML=`<strong>Pat Ina's read:</strong> ${insight}${marketNote}`;
+
+  goStep(5);
+}
+
+function reset(){
+  state.brand=null;state.brandMult=1;state.year=null;state.yearMult=1;
+  state.condition=null;state.condMult=1;state.paint=false;state.owner=false;
+  state.components=false;state.storage=false;
+  document.querySelectorAll('.brand-btn,.year-btn,.cond-btn').forEach(b=>b.classList.remove('selected'));
+  document.querySelectorAll('.toggle-btn').forEach(b=>{b.classList.remove('active');if(b.classList.contains('no'))b.classList.add('active');});
+  ['btn-next-1','btn-next-2','btn-next-3'].forEach(id=>{const b=document.getElementById(id);b.disabled=true;b.style.opacity='.4';});
+  goStep(1);
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+</script>
+</body>
+</html>
